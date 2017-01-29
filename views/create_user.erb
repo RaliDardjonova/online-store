@@ -1,0 +1,38 @@
+<% if flash[:success] %>
+    <p align="center" class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:error] %>
+    <p align="center" class="bg-danger"><%= flash[:error] %></p>
+<% end %>
+
+<br />
+<br />
+<h1 align="center">Регистрация</h1>
+<br />
+<br />
+
+<form method="post" action="/create_user" class="container">
+    <div class="form-group">
+        <label for="user-name-input">Потребителско име:</label>
+        <input id="user-name-input"
+               class="form-control"
+               name="user_name"
+               type="text"
+               placeholder="Име"
+               maxlength="20"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="text-input">Парола</label>
+        <input id="password-input"
+                  class="form-control"
+                  name="password"
+                  type="password"
+                  placeholder="********"
+                  maxlength="20"
+                  required>
+    </div>
+
+    <button type="submit" class="btn btn-default">Регистрирай се!</button>
+</form>

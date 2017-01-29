@@ -1,0 +1,28 @@
+
+<% if session[:user_name] == 'admin'%>
+<br>
+<ul class="normal" id="add_shoes"><li> <a href='/add_shoes'>Добавяне на обувки</a></li></ul>
+<%end%>
+
+<br>
+<br>
+<br>
+
+<% if Shoe.all == nil %>
+    В момента няма налични обувки.
+<% else %>
+<table>
+  <% Shoe.all.each do |shoes| %>
+    <tr>
+        <td><strong><%= shoes.shoes_name %></strong></td>
+        <td><%= shoes.price %></td>
+        <td><form method="post" action="/open_shoes">
+          <input type='hidden' value= "<%=shoes.shoes_name%>" name="shoes_name" >
+          <button type="submit" class="btn btn-default">Виж повече</button>
+        </form>
+        </td>
+    </tr>
+
+  <% end %>
+</table>
+<%end%>

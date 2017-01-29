@@ -1,0 +1,36 @@
+<% if flash[:error] %>
+    <p align="center" class="bg-danger"><%= flash[:error] %></p>
+<% end %>
+
+<br />
+<br />
+<h1 align="center">Вход</h1>
+<br />
+<br />
+
+<form method="post" action="/login" class="container">
+    <div class="form-group">
+        <label for="user-name-input">Потребителско име</label>
+        <input id="user-name-input"
+               class="form-control"
+               name="user_name"
+               type="text"
+               placeholder="Име"
+               maxlength="20"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="text-input">Парола</label>
+        <input id="password-input"
+                  class="form-control"
+                  name="password"
+                  type="password"
+                  placeholder="********"
+                  maxlength="20"
+                  required>
+    </div>
+
+    <button type="submit" class="btn btn-default">Вход</button>
+</form>
+<br />
+<p align="center"><a href="/admin_login">Влезни като администратор</a></p>

@@ -1,0 +1,74 @@
+<% if flash[:success] %>
+    <p align="center" class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<h3 align='center'>Добавяне на обувки</h3>
+
+<form method="post" action="/add_shoes" class="container" style="width: 700px">
+    <div class="form-group">
+        <label for="shoes-name-input">Наименование</label>
+        <input id="shoes-name-input"
+               class="form-control"
+               name="shoes_name"
+               type="string"
+               maxlength="50"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="description-input">Описание</label>
+        <textarea id="description-input"
+                  class="form-control"
+                  name="description"
+                  type="string"
+                  required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="price-input">Цена</label>
+        <input id="price-input" class="form-control" name="price" type="number" step="0.01" required>
+    </div>
+    <div class="form-group">
+        <label for="size-input">Размер</label>
+        <input id="size-input" class="form-control" name="size" type="number" step="0.05" required>
+    </div>
+    <div class="form-group">
+        <label for="color-input">Цвят</label>
+        <br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="white" checked>Бели<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="yellow">Жълти<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="orange">Оранжеви<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="red">Червени<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="pink">Розови<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="purble">Лилави<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="blue">Сини<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="green">Зелени<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="black">Черни<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="grey">Сиви
+    </div>
+    <div class="form-group">
+        <label for="gender-input">Пол</label>
+        <br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="women" checked>Дамски<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="men">Мъжки<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="children">Детски<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="unisex">Унисекс<br>
+    </div>
+
+    <div class="form-group">
+        <label for="category-input">Категория</label>
+        <br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="sport" checked>Спортни<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="heels">Токчета<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="formal">Официални<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="boots">Ботуши и боти<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="sandals">Сандали<br>
+    </div>
+
+    <div class="form-group">
+        <label for="amount-input">Налично количество</label>
+        <input id="amount-input" class="form-control" name="amount" type="number" required>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-default">Запиши</button>
+</form>

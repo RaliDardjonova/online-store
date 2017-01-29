@@ -1,0 +1,20 @@
+table{
+  width: 100%;
+
+}
+
+tr {
+width: 100%;
+text-align: center;
+padding: 15px;
+background-color: #8000ff;
+color: white;
+display: block;
+}
+tr:hover {
+  background-color: #6600cc;
+  color: white;}
+tr a:link,tr a:visited,tr a:hover,tr a:active {
+  color: white;
+  text-decoration: none;
+}

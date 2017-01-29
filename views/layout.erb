@@ -1,0 +1,55 @@
+
+<html>
+  <head>
+    <title>My Page</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/topNav.css">
+    <link rel="stylesheet" type="text/css" href="/styles/header.css">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/styles/normal.css">
+    <link rel="stylesheet" type="text/css" href="/styles/product_table.css">
+  </head>
+  <body>
+    <header>
+      <ul class="header" id="header">
+        <li><a href="/create_user">Регистрация  </a></li>
+        <%if session[:user_name].nil? %>
+          <li align="right"><a href="/login">Вход</a></li>
+        <% else %>
+          <li><a href="/logout">Изход</a></li>
+          <br>
+          <p style="color:white;">&nbsp;&nbsp;&nbsp;Влезли сте като: <%=session[:user_name]%></p>
+        <%end%>
+      </ul>
+    </header>
+
+    <ul class="topnav" id="Topnav">
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/shoes">Обувки</a></li>
+      <li><a href="/shoes">Панталони</a></li>
+      <li><a href="/shoes">Блузи</a></li>
+      <li class="icon">
+        <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+      </li>
+    </ul>
+
+    <script>
+      function myFunction()
+       {
+        var x = document.getElementById("Topnav");
+        if (x.className === "topnav")
+        {
+          x.className += " responsive";
+        } else
+        {
+        x.className = "topnav";
+        }
+      }
+    </script>
+
+    <div id='main'>
+      <%= yield %>
+    </div>
+  </body>
+</html>
