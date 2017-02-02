@@ -1,7 +1,8 @@
 
-<% if session[:user_name] == 'admin'%>
+<% if session[:admin] == true%>
 <br>
 <ul class="normal" id="add_shoes"><li> <a href='/add_shoes'>Добавяне на обувки</a></li></ul>
+<br>
 <%end%>
 
 <br>
@@ -11,18 +12,31 @@
 <% if Shoe.all == nil %>
     В момента няма налични обувки.
 <% else %>
-<table>
+<table class="products">
+  <tr class="products">
+    <th class="products">Модел</th>
+    <th class="products">Категория</th>
+    <th class="products">Пол</th>
+    <th class="products">Цвят</th>
+    <th class="products">Размери</th>
+    <th class="products">Цена</th>
+    <th class="products">Допълнителна информация</th>
+  </tr>
   <% Shoe.all.each do |shoes| %>
-    <tr>
-        <td><strong><%= shoes.shoes_name %></strong></td>
-        <td><%= shoes.price %></td>
-        <td><form method="post" action="/open_shoes">
-          <input type='hidden' value= "<%=shoes.shoes_name%>" name="shoes_name" >
-          <button type="submit" class="btn btn-default">Виж повече</button>
-        </form>
+    <tr class="products">
+        <td class="products"><strong><%= shoes.shoes_name %></strong></td>
+        <td class="products"><%= shoes.category %></td>
+        <td class="products"><%= shoes.gender %></td>
+        <td class="products"><%= shoes.color %></td>
+        <td class="products"><%= shoes.size_min %>-<%= shoes.size_max %></td>
+        <td class="products"><%= shoes.price %>лв</td>
+        <td class="products">
+          <form method="post" action="/open_shoes">
+            <input type='hidden' value= "<%=shoes.product_id%>" name="product_id" >
+            <button type="submit" class="button_product">Виж повече</button>
+          </form>
         </td>
     </tr>
-
   <% end %>
 </table>
 <%end%>

@@ -1,0 +1,36 @@
+
+table.comment {
+  table-layout:fixed;
+  display: table;
+  width: 85%;
+
+  margin: 50px;
+}
+
+th.comment {
+  text-align: center;
+  background-color: #d2dfe0;
+  color: #50505c;
+  }
+
+tr.comment {
+width: 85%;
+text-align: center;
+background-color: #d2dfe0;
+color: #50505c;
+display: table-row;
+
+}
+
+td.comment {
+  background-color: #f1f1f3;
+  display: table-cell;
+  word-wrap: break-word;
+  padding: 20px;
+}
+
+td.comment_user {
+  width: 30%;
+  word-wrap: break-word;
+  background-color: #d2dfe0;
+}

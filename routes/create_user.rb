@@ -15,8 +15,8 @@ post '/create_user' do
     flash[:error] = "Грешка!Паролата трябва да съдържа минимум 4 знака."
     redirect '/create_user'
   end
-  
-  user = User.new(user_name: params[:user_name], salt: password_salt, password_hash: password_hash)
+
+  user = User.new(user_name: params[:user_name], salt: password_salt, password_hash: password_hash, admin: false)
   names = User.all.map{|user| user.user_name}
 
   if user.valid?
@@ -26,6 +26,7 @@ post '/create_user' do
     else
       flash[:success] = "Поздравления! Вашият акаунт вече е активиран."
       session[:user_name] = params[:user_name]
+      session[:admin] = false
       user.save
       redirect '/'
     end

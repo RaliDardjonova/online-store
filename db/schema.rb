@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128214657) do
+ActiveRecord::Schema.define(version: 20170202125947) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "admin_name"
-    t.string "salt1"
-    t.string "password_hash1"
-    t.string "salt2"
-    t.string "password_hash2"
+  create_table "comments", force: :cascade do |t|
+    t.string   "user_name"
+    t.text     "comment"
+    t.datetime "date_time"
+    t.integer  "product_id"
   end
 
   create_table "shoes", force: :cascade do |t|
@@ -25,8 +24,9 @@ ActiveRecord::Schema.define(version: 20170128214657) do
     t.text    "description"
     t.float   "price"
     t.integer "product_id"
-    t.float   "size"
-    t.float   "color"
+    t.float   "size_min"
+    t.float   "size_max"
+    t.string  "color"
     t.string  "gender"
     t.integer "amount"
     t.string  "category"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(version: 20170128214657) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "user_name"
-    t.string "salt"
-    t.string "password_hash"
+    t.string  "user_name"
+    t.string  "salt"
+    t.string  "password_hash"
+    t.boolean "admin"
   end
 
 end

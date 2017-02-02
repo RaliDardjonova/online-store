@@ -1,15 +1,18 @@
 get '/admin_login' do
-  erb :admin_login
+  if session[:admin] == true
+    erb :admin_login, :layout => false
+  else
+    erb :no_permission
+  end
 end
 
 post '/admin_login' do
-  admin = Admin.authenticate(params[:user_name], params[:password1], params[:password2])
-  if admin
-    session[:user_name] = 'admin'
-    flash[:success] = "Поздравления! Влезнахте като администратор."
-    redirect '/'
-  else
-    flash[:error] = "Грешни име или парола."
-  end
-  redirect '/admin_login'
+  isAdmin = params[:admin_permission]
+    if isAdmin == "true"
+      flash[:success] = "Поздравления! Влезнахте като администратор."
+    else
+      session[:admin] = false
+      flash[:success] = "Поздравления! Влезнахте като потребител."
+    end
+  redirect '/'
 end
