@@ -1,0 +1,86 @@
+
+<h2 align="left" style="margin-left:5%">Данни за поръчката</h2>
+<br>
+<% order = Order.find(params[:order_id]) %>
+<% user = User.find_by user_name: order.user_name %>
+
+<br>
+<form method="post" action="/confirm_order" class="container" style="width: 40%;margin-left:0px">
+    <div class="form-group">
+        <label for="email-input">Имейл за кореспонденция</label>
+        <input id="email-input"
+               class="form-control"
+               name="email"
+               type="string"
+               value="<%= user.email%>"
+               readonly="readonly">
+    </div>
+
+    <div class="form-group">
+        <label for="price-input">Обща цена на продуктите</label>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="string"
+               value="<%= order.total%>лв"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="shipping-input">Цена на доставката</label>
+        <input id="shipping-input"
+               class="form-control"
+               name="shipping"
+               type="string"
+               value="<%= order.shipping%>лв"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="adress-input">Адрес за доставка</label>
+        <textarea id="adress-input"
+               class="form-control"
+               name="adress"
+               type="text"
+               rows="4"
+               readonly="readonly"></textarea>
+    </div>
+</form>
+
+
+<h3 style="margin-left:5%">Продукти в поръчката</h3>
+<br>
+<table class="products">
+  <tr class="products">
+    <th class="products">Модел</th>
+    <th class="products">Категория</th>
+    <th class="products">Пол</th>
+    <th class="products">Цвят</th>
+    <th class="products">Размер</th>
+    <th class="products">Брой</th>
+    <th class="products">Единична цена</th>
+    <th class="products">Общо</th>
+  </tr>
+
+  <% order.order_items.each do |order_item| %>
+    <tr class="products">
+        <td class="products"><strong><%= order_item.product.product_name %></strong></td>
+        <td class="products"><%= order_item.product.type %></td>
+        <td class="products"><%= order_item.product.gender %></td>
+        <td class="products"><%= order_item.product.color %></td>
+        <td class="products"><%= order_item.size %></td>
+        <td class="products"><%= order_item.amount %></td>
+        <td class="products"><%= order_item.unit_price %>лв</td>
+        <td class="products"><%= order_item.total_price%>лв</td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<br>
+
+<form  method="post" action="/ship_order">
+  <button style="margin-left:5%;margin-top:0px;font-size:17px;padding: 14px 16px; background-color:green" type="submit" value="<%= order.id %>" name="order_id" class="delete_button">Потвърди поръчката за изпълнение</button>
+</form>
+
+<br>
+<br>
+<br>

@@ -1,4 +1,5 @@
-
+<% require_relative '../helpers/create_order.rb'
+%>
 <html>
   <head>
     <title>My Page</title>
@@ -20,13 +21,14 @@
           <li align="right"><a href="/login">Вход</a></li>
         <% else %>
           <li><a href="/logout">Изход</a></li>
-          <li style="color:green"><a href="/cart">Количка</a></li>
+          <% if is_admin %>
+          <li><a href="/pending_orders">Поръчки за потвърждение</a></li>
+          <% else %>
+          <li><a href="/cart">Количка</a></li>
+          <% end %>
           <br>
           <p style="color:white;">&nbsp;&nbsp;&nbsp;Влезли сте като: <%=session[:user_name]%>
-            <%isAdmin = false %>
-            <% user = User.find_by user_name: session[:user_name] %>
-            <% isAdmin = user.admin if user.respond_to? :admin %>
-              <% if isAdmin == true%>
+              <% if is_admin %>
               (Администратор)
             <%end%></p>
         <%end%>

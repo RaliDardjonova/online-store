@@ -25,6 +25,11 @@ require_relative 'routes/delete_comment'
 require_relative 'routes/cart'
 require_relative 'routes/update_order'
 require_relative 'routes/confirm_order'
+require_relative 'routes/pending_orders'
+require_relative 'routes/open_pending_order'
+require_relative 'routes/ship_order'
+require_relative 'routes/error_handling'
+require_relative 'helpers/create_order'
 
 set :root, __dir__
 enable :sessions

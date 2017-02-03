@@ -1,0 +1,34 @@
+
+
+<% pending_orders = OrderStatus.find(2).orders %>
+<% if pending_orders == [] %>
+    В момента няма чакащи поръчки.
+<% else %>
+<h2 align="left" style="margin-left:5%">Чакащи поръчки</h2>
+<br>
+<table class="products">
+  <tr class="products">
+    <th class="products" style="background-color:#e6ac00;">Номер на поръчка</th>
+    <th class="products" style="background-color:#e6ac00;">Потребител</th>
+    <th class="products" style="background-color:#e6ac00;">Обща сума</th>
+    <th class="products" style="background-color:#e6ac00;">Доставка</th>
+    <th class="products" style="background-color:#e6ac00;">Дата</th>
+    <th class="products" style="background-color:#e6ac00;">Допълнителна информация</th>
+  </tr>
+
+  <% pending_orders.each do |order| %>
+    <tr class="products">
+        <td class="products" style="background-color: #ffe699;"><strong><%= order.id %></strong></td>
+        <td class="products" style="background-color: #ffe699;"><%= order.user_name %></td>
+        <td class="products" style="background-color: #ffe699;"><%= order.total %>лв</td>
+        <td class="products" style="background-color: #ffe699;"><%= order.shipping %>лв</td>
+        <td class="products" style="background-color: #ffe699;"><%= order.updated_at %></td>
+        <td class="products" style="background-color: #ffe699;">
+          <form method="get" action="/open_pending_order?order_id=<%=order.id%>">
+            <button style="margin-left:5%" type="submit" name="order_id" value="<%=order.id%>" class="button_product">Виж повече</button>
+          </form>
+        </td>
+    </tr>
+  <% end %>
+</table>
+<%end%>

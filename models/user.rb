@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
     validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
     message: "Невалиден e-mail адрес."}
 
-  has_many :orders
+  has_many :comments
 
   def self.authenticate(user_name, password)
     user = find_by user_name: user_name

@@ -1,8 +1,6 @@
+
 get '/delete_comment' do
-  isAdmin = false
-  user = User.find_by user_name: session[:user_name]
-  isAdmin = user.admin if user.respond_to? :admin
-  if isAdmin == true
+  if is_admin == true
     erb :open_shoes
   else
     erb :no_permission

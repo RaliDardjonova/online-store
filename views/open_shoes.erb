@@ -3,6 +3,7 @@
 </h1>
 <% if @shoe.amount > 0 %>
   <ul style="background-color: green;" class="normal"><li> В наличност </li></ul>
+  <% if session[:user_name] && !is_admin %>
   <form style="margin-left:200px" method="post" action="/add_to_cart">
     <label for="price-input">Изберете размер</label>
     <select name="size" >
@@ -15,6 +16,7 @@
     <input style="margin-left:425px; width:70px; margin-top:-25px" id="amount-input" class="form-control" name="amount" type="number" min="1" value="1" required>
     <button style="margin-left:525px;margin-top:-35px;font-size:17px;padding: 14px 16px; background-color:grey" type="submit" value="<%=@shoe.product_id%>" name="product_id" class="delete_button">Добави към количката</button>
   </form>
+  <% end %>
 <%else%>
   <ul style="background-color: #b30000;" class="normal"><li> Продуктът е изчерпан </li></ul>
 <%end%>
@@ -31,12 +33,14 @@
 <table id="comments" class="comment">
   <% comments.each do |comment| %>
     <tr class="comment">
-      <td class="comment_user"><strong><%=comment.user_name%></strong></td>
+      <td class="comment_user"><strong><%=comment.user_name%></strong>
+        <% user = User.find_by user_name: comment.user_name%>
+        <%if user.admin == true %>
+         (Администратор)
+        <%end%>
+      </td>
       <td class="comment"><%=comment.comment %></td>
-      <%isAdmin = false %>
-      <% user = User.find_by user_name: session[:user_name] %>
-      <% isAdmin = user.admin if user.respond_to? :admin %>
-      <% if isAdmin == true%>
+      <% if is_admin%>
         <td class="comment_delete">
           <form onsubmit="return confirm('Сигурнили сте, че искате да изтриете коментара?');" method="post" action="/delete_comment">
             <input type='hidden' value="<%=comment.id%>" name="comment_id" >

@@ -1,7 +1,7 @@
-<%isAdmin = false %>
-<% user = User.find_by user_name: session[:user_name] %>
-<% isAdmin = user.admin if user.respond_to? :admin %>
-  <% if isAdmin == true%>
+<% require_relative "../helpers/create_order.rb" 
+%>
+
+  <% if is_admin == true %>
     <form method="get" action="/add_shoes">
       <button style="margin:2%;font-size:17px;padding: 15px 17px;" type="submit" class="delete_button">Добавяне на обувки</button>
     </form>

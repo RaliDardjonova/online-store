@@ -5,7 +5,10 @@ get '/cart' do
 end
 
 post '/add_to_cart' do
-    order_item_params = {product_id: params[:product_id], amount: params[:amount], size: params[:size]}
+    order_item_params = {
+                        product_id: params[:product_id],
+                        amount: params[:amount],
+                        size: params[:size]}
 
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
