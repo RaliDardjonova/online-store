@@ -3,14 +3,13 @@ ul.normal {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #b30000;
     position: absolute;
-    left: 25px;
+    left: 50px;
 }
 
-ul.normal li {float: right;}
 
-ul.normal li a {
+ul.normal li {
+  float: right;
     display: inline-block;
     color: #f2f2f2;
     text-align: center;

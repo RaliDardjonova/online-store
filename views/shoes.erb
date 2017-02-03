@@ -1,10 +1,14 @@
-
-<% if session[:admin] == true%>
-<br>
-<ul class="normal" id="add_shoes"><li> <a href='/add_shoes'>Добавяне на обувки</a></li></ul>
+<%isAdmin = false %>
+<% user = User.find_by user_name: session[:user_name] %>
+<% isAdmin = user.admin if user.respond_to? :admin %>
+  <% if isAdmin == true%>
+    <form method="get" action="/add_shoes">
+      <button style="margin:2%;font-size:17px;padding: 15px 17px;" type="submit" class="delete_button">Добавяне на обувки</button>
+    </form>
 <br>
 <%end%>
-
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -24,14 +28,14 @@
   </tr>
   <% Shoe.all.each do |shoes| %>
     <tr class="products">
-        <td class="products"><strong><%= shoes.shoes_name %></strong></td>
+        <td class="products"><strong><%= shoes.product_name %></strong></td>
         <td class="products"><%= shoes.category %></td>
         <td class="products"><%= shoes.gender %></td>
         <td class="products"><%= shoes.color %></td>
         <td class="products"><%= shoes.size_min %>-<%= shoes.size_max %></td>
         <td class="products"><%= shoes.price %>лв</td>
         <td class="products">
-          <form method="post" action="/open_shoes">
+          <form method="post" action="/open_shoes?product_id=<%=shoes.product_id%>">
             <input type='hidden' value= "<%=shoes.product_id%>" name="product_id" >
             <button type="submit" class="button_product">Виж повече</button>
           </form>

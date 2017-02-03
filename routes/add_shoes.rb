@@ -1,5 +1,8 @@
 get '/add_shoes' do
-  if session[:admin] == true
+  isAdmin = false
+  user = User.find_by user_name: session[:user_name]
+  isAdmin = user.admin if user.respond_to? :admin
+  if isAdmin == true
     erb :add_shoes
   else
     erb :no_permission
@@ -7,19 +10,8 @@ get '/add_shoes' do
 end
 
 post '/add_shoes' do
-  if Shoe.all == nil
-    shoes = []
-  else
-    shoes = Shoe.all
-  end
 
-  if Top.all == nil
-    tops = []
-  else
-    tops = Top.all
-  end
-
-  products = Shoe.all + Top.all
+  products = Product.all
   if products == []
     product_id = 1
   else
@@ -27,7 +19,7 @@ post '/add_shoes' do
   end
 
   shoes = Shoe.new(
-                  shoes_name: params[:shoes_name],
+                  product_name: params[:shoes_name],
                   description: params[:description],
                   price: params[:price],
                   product_id: product_id,

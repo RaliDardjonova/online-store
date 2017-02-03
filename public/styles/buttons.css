@@ -1,20 +1,39 @@
 
+.button_product {
+    background-color: #6600cc;
+    border: none;
+    color: white;
+    padding: 12px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: table-cell;
+    font-size: 15px;
+    margin: -17px 42px;
+    cursor: pointer;
+    position:absolute;
+}
+
+.button_product:hover {
+    background-color: #6600FF;
+    color: white;
+}
+
 
 .delete_button {
   background-color: #b30000;
   border: none;
   color: white;
-  padding: 15px 15px;
+  padding: 12px 12px;
   text-align: center;
   text-decoration: none;
-  display: table-cell;
+  display: block;
   font-size: 15px;
-  margin: -17px 42px;
+  margin: 0% -3%;
   cursor: pointer;
   position:absolute;
 }
 
 .delete_button:hover {
-    background-color: #6600FF;
+    background-color: #800000;
     color: white;
 }

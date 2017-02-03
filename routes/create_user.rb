@@ -16,7 +16,7 @@ post '/create_user' do
     redirect '/create_user'
   end
 
-  user = User.new(user_name: params[:user_name], salt: password_salt, password_hash: password_hash, admin: false)
+  user = User.new(user_name: params[:user_name], email: params[:email], salt: password_salt, password_hash: password_hash, admin: false)
   names = User.all.map{|user| user.user_name}
 
   if user.valid?
@@ -26,12 +26,11 @@ post '/create_user' do
     else
       flash[:success] = "Поздравления! Вашият акаунт вече е активиран."
       session[:user_name] = params[:user_name]
-      session[:admin] = false
       user.save
       redirect '/'
     end
   else
-    flash[:error] = "Неподхощи име или парола. #{user.errors.full_messages.to_sentence}"
+    flash[:error] = "Неподхощи данни. #{user.errors.full_messages.to_sentence}"
     redirect '/create_user'
   end
 end

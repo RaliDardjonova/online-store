@@ -1,2 +1,2 @@
-class Top < ActiveRecord::Base
+class Top < Product
 end

@@ -3,8 +3,7 @@ table.comment {
   table-layout:fixed;
   display: table;
   width: 85%;
-
-  margin: 50px;
+  margin-left: 50px;
 }
 
 th.comment {
@@ -14,15 +13,17 @@ th.comment {
   }
 
 tr.comment {
-width: 85%;
-text-align: center;
-background-color: #d2dfe0;
-color: #50505c;
-display: table-row;
+  width: 85%;
+  text-align: center;
+  background-color: #f1f1f3;
+  color: #50505c;
+  display: table-row;
+  border: 1px solid gray;
 
 }
 
 td.comment {
+  width: 50%;
   background-color: #f1f1f3;
   display: table-cell;
   word-wrap: break-word;
@@ -33,4 +34,13 @@ td.comment_user {
   width: 30%;
   word-wrap: break-word;
   background-color: #d2dfe0;
+}
+
+td.comment_delete {
+  width: 30%;
+  word-wrap: break-word;
+  background-color: #f1f1f3;
+  text-align: center;
+  display: inline-block;
+  margin: 4% 0%;
 }

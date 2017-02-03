@@ -1,2 +1,2 @@
-class Shoe < ActiveRecord::Base
+class Shoe < Product
 end
