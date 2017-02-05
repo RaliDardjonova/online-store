@@ -17,8 +17,8 @@ post '/add_product' do
     flash[:error] = "Грешка. Минималния размер е по-голям от максималния!"
     redirect '/add_product'
   else
-    size_min = params[:size_min].to_i
-    size_max = params[:size_max].to_i
+    size_min = params[:size_min].to_f
+    size_max = params[:size_max].to_f
     product = Product.new(
                     product_name: params[:shoes_name],
                     description: params[:description],

@@ -1,0 +1,81 @@
+
+
+<h3 align='center'>Промяна на обувки</h3>
+<form method="post" action="/save_update_product" class="container" style="width: 700px">
+  <div class="form-group">
+      <input value="Shoe" name="type" type="hidden">
+  </div>
+  <div class="form-group">
+      <input value="<%= @product.product_id %>" name="product_id" type="hidden">
+  </div>
+    <div class="form-group">
+        <label for="shoes-name-input">Наименование</label>
+        <input id="shoes-name-input"
+               class="form-control"
+               name="shoes_name"
+               type="string"
+               maxlength="50"
+               value="<%= @product.product_name%>"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="description-input">Описание</label>
+        <textarea id="description-input"
+                  class="form-control"
+                  name="description"
+                  type="text"
+                  required><%= @product.description%></textarea>
+    </div>
+    <div class="form-group" style="width: 200px">
+        <label for="price-input">Цена</label>
+        <input id="price-input" class="form-control" name="price" type="number" step="0.01" value="<%= @product.price %>" required>
+    </div>
+    <label for="size-input">Размер:</label>
+    <div class="form-group" style="width: 100px;margin-left: 25px">
+        <label for="size-input-min">От</label>
+        <input id="size-input-min" class="form-control" name="size_min" type="number" step="0.05" value="<%= @product.size_min %>" required>
+        <label for="size-input-max">До</label>
+        <input id="size-input-max" class="form-control" name="size_max" type="number" step="0.05" value="<%= @product.size_max %>" required>
+    </div>
+    <div class="form-group">
+        <label for="color-input">Цвят</label>
+        <br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="white" <% if @product.color == 'white' %> checked <%end%> >Бели<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="yellow"<% if @product.color == 'yellow' %> checked <%end%>>Жълти<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="orange"<% if @product.color == 'orange' %> checked <%end%>>Оранжеви<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="red"<% if @product.color == 'red' %> checked <%end%>>Червени<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="pink"<% if @product.color == 'pink' %> checked <%end%>>Розови<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="purble" <% if @product.color == 'purble' %> checked <%end%>>Лилави<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="blue" <% if @product.color == 'blue' %> checked <%end%>>Сини<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="green" <% if @product.color == 'green' %> checked <%end%>>Зелени<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="black" <% if @product.color == 'black' %> checked <%end%>>Черни<br>
+        <input id="color-input" class="form-control" name="color" type="radio" value="grey" <% if @product.color == 'grey' %> checked <%end%>>Сиви
+    </div>
+    <div class="form-group">
+        <label for="gender-input">Пол</label>
+        <br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="women" <% if @product.gender == 'women' %> checked <%end%>>Дамски<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="men" <% if @product.gender == 'men' %> checked <%end%>>Мъжки<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="children" <% if @product.gender == 'children' %> checked <%end%>>Детски<br>
+        <input id="gender-input" class="form-control" name="gender" type="radio" value="unisex" <% if @product.gender == 'unisex' %> checked <%end%>>Унисекс<br>
+    </div>
+
+    <div class="form-group">
+        <label for="category-input">Категория</label>
+        <br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="sport" <% if @product.category == 'sport' %> checked <%end%>>Спортни<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="heels" <% if @product.category == 'heels' %> checked <%end%>>Токчета<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="formal" <% if @product.category == 'formal' %> checked <%end%>>Официални<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="boots" <% if @product.category == 'boots' %> checked <%end%>>Ботуши и боти<br>
+        <input id="category-input" class="form-control" name="category" type="radio" value="sandals" <% if @product.category == 'sandals' %> checked <%end%>>Сандали<br>
+    </div>
+
+    <div class="form-group" style="width: 200px">
+        <label for="amount-input">Налично количество</label>
+        <input id="amount-input" class="form-control" name="amount" type="number" step="1" value="<%= @product.amount %>" required>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-default">Запиши</button>
+</form>

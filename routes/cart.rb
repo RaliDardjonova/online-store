@@ -1,4 +1,3 @@
-require_relative '../helpers/create_order.rb'
 
 get '/cart' do
   erb :cart
