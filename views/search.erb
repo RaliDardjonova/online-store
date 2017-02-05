@@ -50,6 +50,7 @@
     <input id="gender-input" class="form-control" name="gender" type="radio" value="children">Детски<br>
     <input id="gender-input" class="form-control" name="gender" type="radio" value="unisex">Унисекс<br>
 </div>
+
 <% if params[:type] == "Shoe" %>
 
 <div class="form-group" style="margin-left:570px;margin-top:-120px" >
@@ -65,10 +66,62 @@
 
 <div class="form-group" style="width: 100px;margin-left:740px;margin-top:-140px">
   <label for="size-input">Размер:</label>
-    <input id="size-input-min" class="form-control" name="size" type="number" value="" step="0.05" >
+    <input id="size-input-min" class="form-control" name="size" type="number" value="" step="0.5" >
 </div>
 <% end %>
-<button style="width: 200px; margin-left:30%;margin-top:200px" type="submit" class="btn btn-default">Търси</button>
+
+<% if params[:type] == "Trouser" %>
+
+<div class="form-group" style="margin-left:570px;margin-top:-120px" >
+    <label for="category-input">Категория</label>
+    <br>
+    <input id="category-input" class="form-control" name="category" type="hidden" value="" checked>
+    <input id="category-input" class="form-control" name="category" type="radio" value="long-jeans">Дълги дънки<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="short-jeans">Къси дънки<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="long-not-jeans">Дълги не-дънки<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="short-not-jeans">Къси не-дънки<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="formal">Официални<br>
+</div>
+
+<div class="form-group" style="width: 100px;margin-left:740px;margin-top:-140px">
+  <label for="size-input">Размер:</label>
+    <input id="size-input-min" class="form-control" name="size" type="number" value="" step="1" >
+</div>
+<% end %>
+
+<% if params[:type] == "Top" %>
+
+<div class="form-group" style="margin-left:570px;margin-top:-120px" >
+    <label for="category-input">Категория</label>
+    <br>
+    <input id="category-input" class="form-control" name="category" type="hidden" value="" checked>
+    <input id="category-input" class="form-control" name="category" type="radio" value="vest">Потници<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="T-shirts">Тениски<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="long-sleeved">С дълъг ръкав<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="shirt">Ризи<br>
+    <input id="category-input" class="form-control" name="category" type="radio" value="sweater">Пуловери<br>
+</div>
+
+<div style="width: 100px;margin-left:740px;margin-top:-140px">
+  <label for="size-input-max">Размер:</label>
+  <br>
+  <input id="size-input" class  ="form-control" name="size" type="hidden" value="" checked>
+  <input id="size-input" class  ="form-control" name="size" type="radio" value="1">XS<br>
+  <input id="size-input" class="form-control" name="size" type="radio" value="2">S<br>
+  <input id="size-input" class="form-control" name="size" type="radio" value="3">M<br>
+  <input id="size-input" class="form-control" name="size" type="radio" value="4">L<br>
+  <input id="size-input" class="form-control" name="size" type="radio" value="5">XL<br>
+  <input id="size-input" class="form-control" name="size" type="radio" value="6">XXL<br>
+</div>
+<% end %>
+
+<% if params[:type] == "" %>
+<% margin = 154 %>
+<% else %>
+<% margin = 200 %>
+<% end %>
+
+<button style="width: 200px; margin-left:30%;margin-top:<%= margin %>px" type="submit" class="btn btn-default">Търси</button>
 </form>
 
 

@@ -124,7 +124,7 @@ helpers do
     if size == nil || size == ""
       Product.where(hash) & get_products_by_price(price)
     else
-      Product.where(str1) & Product.where(str2) & Product.where(hash) & get_products_by_price(price)
+      Product.where(check_min_size) & Product.where(check_max_size) & Product.where(hash) & get_products_by_price(price)
     end
   end
 
