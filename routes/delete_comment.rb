@@ -8,10 +8,14 @@ get '/delete_comment' do
 end
 
 post '/delete_comment' do
-  comment_id = params[:comment_id].to_i
-  product_id = Comment.find(comment_id).product_id
+  if is_admin
+    comment_id = params[:comment_id].to_i
+    product_id = Comment.find(comment_id).product_id
 
-  Comment.delete(comment_id)
+    Comment.delete(comment_id)
 
-  redirect "/open_shoes?product_id=#{product_id}"
+    redirect "/open_shoes?product_id=#{product_id}"
+  else
+    redirect '/'
+  end
 end

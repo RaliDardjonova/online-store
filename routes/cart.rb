@@ -5,6 +5,7 @@ get '/cart' do
 end
 
 post '/add_to_cart' do
+  if is_user_active
     order_item_params = {
                         product_id: params[:product_id],
                         amount: params[:amount],
@@ -14,6 +15,6 @@ post '/add_to_cart' do
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
-
+  end
   redirect '/cart'
 end

@@ -1,0 +1,2 @@
+class Trouser < Product
+end

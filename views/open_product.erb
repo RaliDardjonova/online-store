@@ -1,20 +1,27 @@
 <br>
-<h1 align="left" style="margin-left:50px"><%= @shoe.product_name %>
+<h1 align="left" style="margin-left:50px"><%= @product.product_name %>
 </h1>
-<% if @shoe.amount > 0 %>
+<% if @product.amount > 0 %>
   <ul style="background-color: green;" class="normal"><li> В наличност </li></ul>
   <% if session[:user_name] && !is_admin %>
   <form style="margin-left:200px" method="post" action="/add_to_cart">
     <label for="price-input">Изберете размер</label>
     <select name="size" >
-      <% range=(@shoe.size_min*2).to_i..(@shoe.size_max*2).to_i %>
+      <% range = get_product_sizes @product%>
       <% range.each do |size| %>
-      <option value="<%= size.to_f/2%>"><%= size.to_f/2%></option>
+      <option value="<%= size %>"><%= size %></option>
       <%end%>
     </select>
     <label style="margin-left:25px;" for="amount-input">Изберете брой на продуктите</label>
     <input style="margin-left:425px; width:70px; margin-top:-25px" id="amount-input" class="form-control" name="amount" type="number" min="1" value="1" required>
-    <button style="margin-left:525px;margin-top:-35px;font-size:17px;padding: 14px 16px; background-color:grey" type="submit" value="<%=@shoe.product_id%>" name="product_id" class="delete_button">Добави към количката</button>
+    <button style="margin-left:525px;margin-top:-35px;font-size:17px;padding: 14px 16px; background-color:grey" type="submit" value="<%=@product.product_id%>" name="product_id" class="delete_button">Добави към количката</button>
+  </form>
+  <%elsif is_admin %>
+  <form style="margin-left: 800px" method="post" action="/update_product">
+    <button style="margin-top:0px;font-size:17px;padding: 14px 16px; background-color:#e6ac00;" type="submit" value="<%=@product.product_id%>" name="product_id" class="delete_button">Промени продукта</button>
+  </form>
+  <form style="margin-left:1050px" onsubmit="return confirm('Сигурнили сте, че искате да изтриете продукта?');" method="post" action="/delete_product">
+    <button style="margin-top:-4px;font-size:17px;padding: 14px 16px;" type="submit" value="<%=@product.product_id%>" name="product_id" class="delete_button">Изтрий продукта</button>
   </form>
   <% end %>
 <%else%>
@@ -26,10 +33,10 @@
 <br>
 <h3 align="left" style="margin-left:50px">Описание</h3>
 <div style="margin-left:70px;font-size:17px;">
-  <%=@shoe.description%>
+  <%=@product.description%>
 </div>
 <h3 align="left" style="margin-left:50px">Коментари</h3>
-<%comments = Comment.where product_id: @shoe.product_id %>
+<%comments = Comment.where product_id: @product.product_id %>
 <table id="comments" class="comment">
   <% comments.each do |comment| %>
     <tr class="comment">
@@ -58,7 +65,7 @@
   <div class="form-group" style="margin-left:50px;width: 85%;font-size:25px">
       <label for="comment-input">Напиши коментар</label>
       <textarea id="comment-input" class="form-control" name="comment" type="string" rows="10" required></textarea>
-      <input id="product_id" class="form-control" name="product_id" type="hidden" value="<%= @shoe.product_id%>">
+      <input id="product_id" class="form-control" name="product_id" type="hidden" value="<%= @product.product_id%>">
       <br>
       <button type="submit" class="btn btn-default">Изпрати коментара</button>
   </div>

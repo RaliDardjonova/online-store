@@ -1,5 +1,4 @@
-<% require_relative '../helpers/create_order.rb'
-%>
+
 <html>
   <head>
     <title>My Page</title>
@@ -16,13 +15,15 @@
   <body>
     <header>
       <ul class="header" id="header">
-        <li><a href="/create_user">Регистрация  </a></li>
+
         <%if session[:user_name].nil? %>
+          <li><a href="/create_user">Регистрация  </a></li>
           <li align="right"><a href="/login">Вход</a></li>
         <% else %>
           <li><a href="/logout">Изход</a></li>
           <% if is_admin %>
-          <li><a href="/pending_orders">Поръчки за потвърждение</a></li>
+          <li><a href="/all_orders">Поръчки</a></li>
+          <li><a href="/all_users">Потребители</a></li>
           <% else %>
           <li><a href="/cart">Количка</a></li>
           <% end %>
@@ -38,8 +39,12 @@
     <ul class="topnav" id="Topnav">
       <li><a class="active" href="/">Home</a></li>
       <li><a href="/shoes">Обувки</a></li>
-      <li><a href="/shoes">Панталони</a></li>
-      <li><a href="/shoes">Блузи</a></li>
+      <li><a href="/trousers">Панталони</a></li>
+      <li><a href="/tops">Блузи</a></li>
+      <li><a href="/search">Търси продукти</a></li>
+      <% if is_admin %>
+        <li><a href="/add_product">Добави продукти</a></li>
+      <%  end %>
       <li class="icon">
         <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
       </li>
@@ -60,7 +65,11 @@
     </script>
 
     <div id='main'>
-      <%= yield %>
+    <%  if !is_user_active && session[:user_name]%>
+    <h1 align="center" style="margin-top:5%">Вие сте баннати </h1>
+    <%  else %>
+        <%= yield %>
+      <% end %>
     </div>
   </body>
 </html>

@@ -16,7 +16,7 @@ post '/create_user' do
     redirect '/create_user'
   end
 
-  user = User.new(user_name: params[:user_name], email: params[:email], salt: password_salt, password_hash: password_hash, admin: false)
+  user = User.new(user_name: params[:user_name], email: params[:email], salt: password_salt, password_hash: password_hash, admin: false, status: 'active')
   names = User.all.map{|user| user.user_name}
 
   if user.valid?

@@ -1,0 +1,36 @@
+
+<br>
+<h3 align="left" style="margin-left:5%">Панаталони</h3>
+<br>
+
+<% if Trouser.all == [] %>
+    В момента няма налични блузи.
+<% else %>
+<table class="products">
+  <tr class="products">
+    <th class="products">Модел</th>
+    <th class="products">Категория</th>
+    <th class="products">Пол</th>
+    <th class="products">Цвят</th>
+    <th class="products">Размери</th>
+    <th class="products">Цена</th>
+    <th class="products">Допълнителна информация</th>
+  </tr>
+  <% Trouser.all.each do |trouser| %>
+    <tr class="products">
+        <td class="products"><strong><%= trouser.product_name %></strong></td>
+        <td class="products"><%= trouser.category %></td>
+        <td class="products"><%= trouser.gender %></td>
+        <td class="products"><%= trouser.color %></td>
+        <td class="products"><%= trouser.size_min %>-<%= trouser.size_max %></td>
+        <td class="products"><%= trouser.price %>лв</td>
+        <td class="products">
+          <form method="post" action="/open_product?product_id=<%=trouser.product_id%>">
+            <input type='hidden' value= "<%=trouser.product_id%>" name="product_id" >
+            <button type="submit" class="button_product">Виж повече</button>
+          </form>
+        </td>
+    </tr>
+  <% end %>
+</table>
+<%end%>

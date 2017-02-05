@@ -1,0 +1,53 @@
+
+<h3 align="left" style="margin-left:5%">Търси поръчки</h3>
+<form method="get" action="/select_orders" class="container" style="width: 700px;margin-left:5%">
+<div class="form-group" style="width: 200px;margin-left:5%">
+    <label for="user-name-input">Избери потребител</label>
+    <input id="user-name-input" class="form-control" name="user_name" type="string" value="">
+</div>
+
+<div class="form-group" style="width: 200px; margin-left:40%; margin-top:-70px">
+<label for="price-input">Изберете статус</label>
+<select name="order_status" >
+  <option value="0">Всички</option>
+  <option value="2">Чакащи потвърждение</option>
+  <option value="3">Завършени</option>
+</select>
+</div>
+<button style="width: 100px; margin-left:70%;margin-top:-40px" type="submit" class="btn btn-default">Търси</button>
+</form>
+
+
+<% all_orders =  get_orders params[:order_status], params[:user_name] %>
+<% if all_orders == [] %>
+    Все още няма поръчки.
+<% else %>
+<h3 align="left" style="margin-left:5%">Поръчки</h3>
+<br>
+<table class="products">
+  <tr class="products">
+    <th class="products" style="background-color:#e6ac00;">Номер на поръчка</th>
+    <th class="products" style="background-color:#e6ac00;">Потребител</th>
+    <th class="products" style="background-color:#e6ac00;">Обща сума</th>
+    <th class="products" style="background-color:#e6ac00;">Дата</th>
+    <th class="products" style="background-color:#e6ac00;">Статус</th>
+    <th class="products" style="background-color:#e6ac00;">Допълнителна информация</th>
+  </tr>
+
+  <% all_orders.each do |order| %>
+  <% colour = get_colour order %>
+    <tr class="products">
+        <td class="products" style="background-color:<%= colour %>"><strong><%= order.id %></strong></td>
+        <td class="products" style="background-color: <%= colour %>"><%= order.user_name %></td>
+        <td class="products" style="background-color:<%= colour %>"><%= order.total %>лв</td>
+        <td class="products" style="background-color:<%= colour %>"><%= order.updated_at.localtime.strftime("%d-%m-%Y  %T") %></td>
+        <td class="products" style="background-color:<%= colour %>"><%= get_status order %></td>
+        <td class="products" style="background-color: <%= colour %>">
+          <form method="get" action="/open_order?order_id=<%=order.id%>">
+            <button style="margin-left:5%" type="submit" name="order_id" value="<%=order.id%>" class="button_product">Виж повече</button>
+          </form>
+        </td>
+    </tr>
+  <% end %>
+</table>
+<%end%>

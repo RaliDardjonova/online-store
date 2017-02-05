@@ -1,19 +1,8 @@
-<% require_relative "../helpers/create_order.rb" 
-%>
-
-  <% if is_admin == true %>
-    <form method="get" action="/add_shoes">
-      <button style="margin:2%;font-size:17px;padding: 15px 17px;" type="submit" class="delete_button">Добавяне на обувки</button>
-    </form>
 <br>
-<%end%>
-<br>
-<br>
-<br>
-<br>
+<h3 align="left" style="margin-left:5%">Обувки</h3>
 <br>
 
-<% if Shoe.all == nil %>
+<% if Shoe.all == [] %>
     В момента няма налични обувки.
 <% else %>
 <table class="products">
@@ -35,7 +24,7 @@
         <td class="products"><%= shoes.size_min %>-<%= shoes.size_max %></td>
         <td class="products"><%= shoes.price %>лв</td>
         <td class="products">
-          <form method="post" action="/open_shoes?product_id=<%=shoes.product_id%>">
+          <form method="post" action="/open_product?product_id=<%=shoes.product_id%>">
             <input type='hidden' value= "<%=shoes.product_id%>" name="product_id" >
             <button type="submit" class="button_product">Виж повече</button>
           </form>
