@@ -5,11 +5,13 @@ post '/update_order' do
     order = Order.find(order_id)
     if params[:update_order] == "2"
       order.update(total: order.subtotal)
-      order.update(shipping: 5 + order.total/50)
+      shipping = order.subtotal > 100 ? 0 : 8 - order.subtotal/20
+      order.update(shipping: shipping)
       erb :confirm_order
     else
       order.update(order_status_id: 4)
       session[:order_id] = nil
+      flash[:success] = "Количката ви беше изпразнена."
       redirect '/cart'
     end
   else

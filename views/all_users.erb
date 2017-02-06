@@ -1,91 +1,121 @@
+<% if flash[:success] %>
+    <p align="center" class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:error] %>
+    <p align="center" class="bg-danger"><%= flash[:error] %></p>
+<% end %>
 
 <h3 align="left" style="margin-left:5%">Търси акаунти</h3>
-<form method="get" action="/select_users" class="container" style="width: 700px;margin-left:5%">
-<div class="form-group" style="width: 200px;margin-left:5%">
-    <label for="user-name-input">Акаунт</label>
-    <input id="user-name-input" class="form-control" name="user_name" type="string" value="">
-</div>
+<form method="get"
+      action="/select_users"
+      class="container"
+      style="width: 700px;margin-left:5%">
+    <div class="form-group" style="width: 200px;margin-left:5%">
+        <label for="user-name-input">Акаунт</label>
+        <input id="user-name-input"
+              class="form-control"
+              name="user_name"
+              type="string"
+              value="">
+    </div>
 
-<div class="form-group" style="width: 200px; margin-left:45%; margin-top:-70px">
-<label for="price-input">Права за достъп</label>
-<select name="user_status" >
-  <option value="all">Всички</option>
-  <option value="active">Активни</option>
-  <option value="banned">Баннати</option>
-</select>
-</div>
-<div class="form-group" style="width: 200px; margin-left:70%; margin-top:-60px">
-<label for="price-input">Ниво на достъп</label>
-<select name="is_admin">
-  <option value="all">Всички</option>
-  <option value="true">Администратор</option>
-  <option value="false">Потрребител</option>
-</select>
-</div>
-<button style="width: 100px; margin-left:95%;margin-top:-45px" type="submit" class="btn btn-default">Търси</button>
+    <div class="form-group"
+        style="width: 200px; margin-left:45%; margin-top:-70px">
+        <label for="price-input">Права за достъп</label>
+        <select name="user_status" >
+            <option value="all">Всички</option>
+            <option value="active">Активни</option>
+            <option value="banned">Баннати</option>
+        </select>
+    </div>
+    <div class="form-group"
+         style="width: 200px; margin-left:70%; margin-top:-60px">
+        <label for="price-input">Ниво на достъп</label>
+        <select name="is_admin">
+            <option value="all">Всички</option>
+            <option value="true">Администратор</option>
+            <option value="false">Потрребител</option>
+        </select>
+    </div>
+    <button style="width: 100px; margin-left:95%;margin-top:-45px"
+            type="submit"
+            class="btn btn-default">Търси</button>
 </form>
 
-<% users = get_users_by_name_status_isadmin(params[:user_name], params[:user_status], params[:is_admin]) %>
+<% users = get_users_by_name_status_isadmin(params[:user_name],
+                                            params[:user_status],
+                                            params[:is_admin]) %>
 
 
 <% if users == [] %>
     Няма потребители с указаните данни.
 <% else %>
-<h3 align="left" style="margin-left:5%">Акаунти</h3>
-<br>
-<table class="products">
-  <tr class="products">
-    <th class="products">Акаунт</th>
-    <th class="products">Поща</th>
-    <th class="products">Ниво на достъп</th>
-    <th class="products">Права на достъп</th>
-    <th class="products">Промени ниво на достъп</th>
-    <th class="products">Промени права на достъп</th>
-  </tr>
-  <% users.each do |user| %>
-    <tr class="products">
-        <td class="products"><strong><%= user.user_name %></strong></td>
-        <td class="products"><%= user.email %></td>
-        <td class="products"><%= get_user_status user %></td>
-        <td class="products"><%= user.status %></td>
-        <td class="products">
-          <% if !user.admin && user.status == 'active'%>
-            <form method="post"
-            onsubmit="return confirm('Сигурнили сте, че искате да напарвите потребителя администратор');"
-            action="/make_amdin?user_name=<%=user.user_name%>">
-              <input type='hidden' value= "<%=user.user_name%>" name="user_name" >
-              <button type="submit" class="button_product">Напарви администратор</button>
-            </form>
-          <% end %>
-        </td>
-        <td class="products">
-          <% if user.status == 'active' %>
-            <form method="post"
-            onsubmit="return confirm('Сигурнили сте, че искате да баннете този потребител');"
-            action="/ban_user?user_name=<%=user.user_name%>">
-              <input type='hidden' value= "<%=user.user_name%>" name="user_name" >
-              <button style="background-color:#b30000;margin-left:70px;" type="submit" class="button_product">Спри права</button>
-            </form>
-          <% end %>
-          <% if user.status == 'banned' %>
-            <form method="post"
-            onsubmit="return confirm('Сигурнили сте, че искате да възстановите правата на този потребител');"
-            action="/activate_user?user_name=<%=user.user_name%>">
-              <input type='hidden' value= "<%=user.user_name%>" name="user_name" >
-              <button style="background-color:green;margin-left:65px;" type="submit" class="button_product">Върни права</button>
-            </form>
-          <% end %>
-
-
-         </td>
-
-    <%#    <td class="products">
-    <%#      <form method="post" action="/open_shoes?product_id=<%=shoes.product_id%>
-    <%#        <input type='hidden' value= "<%=shoes.product_id" name="product_id" >
-    <%#        <button type="submit" class="button_product">Виж повече</button>
-          </form>
-        </td>
-    </tr> %>
-  <% end %>
-</table>
+    <h3 align="left" style="margin-left:5%">Акаунти</h3>
+    <br>
+    <table class="products">
+        <tr class="products">
+            <th class="products">Акаунт</th>
+            <th class="products">Поща</th>
+            <th class="products">Ниво на достъп</th>
+            <th class="products">Права на достъп</th>
+            <th class="products">Промени ниво на достъп</th>
+            <th class="products">Промени права на достъп</th>
+        </tr>
+      <% users.each do |user| %>
+        <tr class="products">
+            <td class="products">
+                <strong><%= user.user_name %></strong>
+            </td>
+            <td class="products"><%= user.email %></td>
+            <td class="products"><%= get_user_status user %></td>
+            <td class="products"><%= user.status %></td>
+            <td class="products">
+                <% if !user.admin && user.status == 'active'%>
+                    <form method="post"
+                          onsubmit="return confirm('Сигурнили сте, че искате да\
+  напарвите потребителя администратор');"
+                          action="/make_amdin?user_name=<%=user.user_name%>">
+                        <input type='hidden'
+                              value= "<%=user.user_name%>"
+                              name="user_name" >
+                        <button type="submit"
+                                class="button_product">Напарви администратор
+                        </button>
+                    </form>
+                <% end %>
+            </td>
+            <td class="products">
+                <% if user.status == 'active' %>
+                    <form method="post"
+                          onsubmit="return confirm('Сигурнили сте, че искате\
+ да баннете този потребител');"
+                          action="/ban_user?user_name=<%=user.user_name%>">
+                        <input type='hidden'
+                               value= "<%=user.user_name%>"
+                               name="user_name" >
+                        <button
+                            style="background-color:#b30000;margin-left:70px"
+                            type="submit"
+                            class="button_product">Спри права
+                        </button>
+                    </form>
+                <% end %>
+                <% if user.status == 'banned' %>
+                    <form method="post"
+                          onsubmit="return confirm('Сигурнили сте, че искате\
+ да възстановите правата на този потребител');"
+                          action="/activate_user?user_name=<%=user.user_name%>">
+                        <input type='hidden'
+                             value= "<%=user.user_name%>"
+                             name="user_name" >
+                        <button style="background-color:green;margin-left:65px;"
+                                type="submit"
+                                class="button_product">Върни права
+                        </button>
+                    </form>
+                <% end %>
+            </td>
+      <% end %>
+    </table>
 <%end%>

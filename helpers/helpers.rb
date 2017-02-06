@@ -124,7 +124,10 @@ helpers do
     if size == nil || size == ""
       Product.where(hash) & get_products_by_price(price)
     else
-      Product.where(check_min_size) & Product.where(check_max_size) & Product.where(hash) & get_products_by_price(price)
+      Product.where(check_min_size) &
+      Product.where(check_max_size) &
+      Product.where(hash) &
+      get_products_by_price(price)
     end
   end
 
@@ -140,6 +143,61 @@ helpers do
     hash_sizes[number.to_i.to_s]
   end
 
+  def colors(color)
+    hash_colors = {
+      'yellow' => 'Жълт',
+      'orange' => 'Оранжев',
+      'red' => 'Червен',
+      'white' => 'Бял',
+      'pink' => 'Розов',
+      'purple' => 'Лилав',
+      'blue' => 'Син',
+      'green' => 'Зелен',
+      'black' => 'Черен',
+      'grey' => 'Сив'
+    }
+    hash_colors[color]
+  end
+
+  def genders(gender)
+    hash_genders = {
+      'women' => 'Дамски',
+      'men' => 'Мъжки',
+      'children' => 'Детски',
+      'unisex' => 'Унисекс'
+    }
+    hash_genders[gender]
+  end
+
+  def categories(category)
+    hash_categories = {
+      'sport' => 'Спортни',
+      'heels' => 'На висок ток',
+      'boots' => 'Боти/Ботуши',
+      'sandals' => 'Сандали',
+      'vest' => 'Потници',
+      'T-shirts' => 'Тениски',
+      'sweater' => 'Пуловери',
+      'long-sleeved' => 'С дълъг ръкав',
+      'shirt' => 'Ризи',
+      'long-jeans' => 'Дълги - дънки',
+      'short-jeans' => 'Къси - дънки',
+      'formal' => 'Официални',
+      'long-not-jeans' => 'Дълги - не-дънки',
+      'short-not-jeans' => 'Къси - не-дънки'
+    }
+    hash_categories[category]
+  end
+
+  def types(type)
+    hash_types = {
+      'Shoe' => 'Обувки',
+      'Trouser' => 'Панталони',
+      'Top' => 'Блузи'      
+    }
+    hash_types[type]
+  end
+
   def get_product_sizes(product)
     case product.type
     when "Shoe"
@@ -148,6 +206,9 @@ helpers do
     when "Top"
       range = ((product.size_min.to_i)..(product.size_max.to_i)).to_a
       range = range.map{|number| tops_sizes number }
+    when "Trouser"
+      range = ((product.size_min.to_i)..(product.size_max.to_i)).to_a
+      range = range.map{|number| number.to_s }
     else
       []
     end

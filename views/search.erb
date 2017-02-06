@@ -1,130 +1,339 @@
 
 <h3 align="left" style="margin-left:3%">Търси продукти</h3>
-<form method="get" action="/select_products" class="container" style="width: 1100px;margin-left:6%;margin-bottom:0px">
-<div class="form-group" style="width: 200px;margin-left:0px">
-    <label for="product-name-input">Име на продукта</label>
-    <input id="product-name-input" class="form-control" name="product_name" type="string" value="">
-</div>
+<form method="get"
+      action="/select_products"
+      class="container"
+      style="width: 1100px;margin-left:6%;margin-bottom:0px">
+    <div class="form-group" style="width: 200px;margin-left:0px">
+        <label for="product-name-input">Име на продукта</label>
+        <input id="product-name-input"
+               class="form-control"
+               name="product_name"
+               type="string"
+               value="">
+    </div>
 
-<div class="form-group" style="width: 200px; margin-left:270px; margin-top:-74px">
-<label for="type-input">Изберете тип на продукта</label>
-<select name="type" onchange="this.form.submit()">
-  <option value= "" <% if params[:type] == ""%> selected <% end %>>Всички</option>
-  <option value="Shoe"  <% if params[:type] == "Shoe"%> selected <% end %> >Обувки</option>
-  <option value="Trouser" <% if params[:type] == "Trouser"%> selected <% end %>>Панталони</option>
-  <option value="Top" <% if params[:type] == "Top"%> selected <% end %> >Блузи</option>
-</select>
-</div>
+    <div class="form-group"
+         style="width: 200px; margin-left:270px; margin-top:-74px">
+        <label for="type-input">Изберете тип на продукта</label>
+        <select name="type" onchange="this.form.submit()">
+            <option value= ""
+                    <% if params[:type] == ""%> selected <% end %>>
+                Всички</option>
+            <option value="Shoe"
+                    <% if params[:type] == "Shoe"%> selected <% end %> >
+                Обувки</option>
+            <option value="Trouser"
+                    <% if params[:type] == "Trouser"%> selected <% end %>>
+                Панталони</option>
+            <option value="Top"
+                    <% if params[:type] == "Top"%> selected <% end %> >
+                Блузи</option>
+        </select>
+    </div>
 
-<div class="form-group" style="width: 200px; margin-left:0px; margin-top:30px">
-    <label for="price-input">Цена</label>
-    <br>
-    <input id="price-input" class="form-control" name="price" type="hidden" value="" checked>
-    <input id="price-input" class="form-control" name="price" type="radio" value="1"> до 50 лева<br>
-    <input id="price-input" class="form-control" name="price" type="radio" value="2"> от 50 до 100 лева<br>
-    <input id="price-input" class="form-control" name="price" type="radio" value="3"> от 100 до 200 лева<br>
-    <input id="price-input" class="form-control" name="price" type="radio" value="4">над 200 лева<br>
-</div>
+    <div class="form-group"
+         style="width: 200px; margin-left:0px; margin-top:30px">
+        <label for="price-input">Цена</label>
+        <br>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="hidden"
+               value="" checked>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="radio"
+                value="1"> до 50 лева<br>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="radio"
+               value="2"> от 50 до 100 лева<br>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="radio"
+               value="3"> от 100 до 200 лева<br>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="radio"
+               value="4">над 200 лева<br>
+    </div>
 
-<div class="form-group" style="margin-left:220px;margin-top:-120px">
-    <label for="color-input">Цвят</label>
-    <br>
-    <input id="color-input" class="form-control" name="color" type="hidden" value="" checked>
-    <input id="color-input" class="form-control" name="color" type="radio" value="white">Бели<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="yellow">Жълти<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="orange">Оранжеви<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="red">Червени<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="pink">Розови<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="purble">Лилави<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="blue">Сини<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="green">Зелени<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="black">Черни<br>
-    <input id="color-input" class="form-control" name="color" type="radio" value="grey">Сиви
-</div>
-<div class="form-group" style="margin-left:400px;margin-top:-240px">
-    <label for="gender-input">Пол</label>
-    <br>
-    <input id="gender-input" class="form-control" name="gender" type="hidden" value="" checked>
-    <input id="gender-input" class="form-control" name="gender" type="radio" value="women">Дамски<br>
-    <input id="gender-input" class="form-control" name="gender" type="radio" value="men">Мъжки<br>
-    <input id="gender-input" class="form-control" name="gender" type="radio" value="children">Детски<br>
-    <input id="gender-input" class="form-control" name="gender" type="radio" value="unisex">Унисекс<br>
-</div>
+    <div class="form-group" style="margin-left:220px;margin-top:-120px">
+        <label for="color-input">Цвят</label>
+        <br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="hidden"
+               value="" checked>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="white">Бели<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="yellow">Жълти<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="orange">Оранжеви<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="red">Червени<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="pink">Розови<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="purple">Лилави<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="blue">Сини<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="green">Зелени<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="black">Черни<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="grey">Сиви
+    </div>
+    <div class="form-group" style="margin-left:400px;margin-top:-240px">
+        <label for="gender-input">Пол</label>
+        <br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="hidden"
+               value="" checked>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="women">Дамски<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="men">Мъжки<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="children">Детски<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="unisex">Унисекс<br>
+    </div>
 
-<% if params[:type] == "Shoe" %>
+    <% if params[:type] == "Shoe" %>
+        <div class="form-group" style="margin-left:570px;margin-top:-120px">
+            <label for="category-input">Категория</label>
+            <br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="hidden"
+                   value="" checked>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="sport">Спортни<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="heels">Токчета<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="formal">Официални<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="boots">Ботуши и боти<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="sandals">Сандали<br>
+        </div>
 
-<div class="form-group" style="margin-left:570px;margin-top:-120px" >
-    <label for="category-input">Категория</label>
-    <br>
-    <input id="category-input" class="form-control" name="category" type="hidden" value="" checked>
-    <input id="category-input" class="form-control" name="category" type="radio" value="sport">Спортни<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="heels">Токчета<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="formal">Официални<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="boots">Ботуши и боти<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="sandals">Сандали<br>
-</div>
+        <div class="form-group"
+             style="width: 100px;margin-left:740px;margin-top:-140px">
+            <label for="size-input">Размер:</label>
+            <input id="size-input-min"
+                   class="form-control"
+                   name="size"
+                   type="number"
+                   value=""
+                   step="0.5" >
+        </div>
+    <% end %>
 
-<div class="form-group" style="width: 100px;margin-left:740px;margin-top:-140px">
-  <label for="size-input">Размер:</label>
-    <input id="size-input-min" class="form-control" name="size" type="number" value="" step="0.5" >
-</div>
-<% end %>
+    <% if params[:type] == "Trouser" %>
+        <div class="form-group" style="margin-left:570px;margin-top:-120px" >
+            <label for="category-input">Категория</label>
+            <br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="hidden"
+                   value="" checked>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="long-jeans">Дълги дънки<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="short-jeans">Къси дънки<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="long-not-jeans">Дълги не-дънки<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="short-not-jeans">Къси не-дънки<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="formal">Официални<br>
+        </div>
+        <div class="form-group"
+            style="width: 100px;margin-left:740px;margin-top:-140px">
+            <label for="size-input">Размер:</label>
+            <input id="size-input-min"
+                  class="form-control"
+                  name="size"
+                  type="number"
+                  value=""
+                  step="1" >
+        </div>
+    <% end %>
 
-<% if params[:type] == "Trouser" %>
+    <% if params[:type] == "Top" %>
+        <div class="form-group" style="margin-left:570px;margin-top:-120px" >
+            <label for="category-input">Категория</label>
+            <br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="hidden"
+                   value="" checked>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="vest">Потници<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="T-shirts">Тениски<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="long-sleeved">С дълъг ръкав<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="shirt">Ризи<br>
+            <input id="category-input"
+                   class="form-control"
+                   name="category"
+                   type="radio"
+                   value="sweater">Пуловери<br>
+        </div>
 
-<div class="form-group" style="margin-left:570px;margin-top:-120px" >
-    <label for="category-input">Категория</label>
-    <br>
-    <input id="category-input" class="form-control" name="category" type="hidden" value="" checked>
-    <input id="category-input" class="form-control" name="category" type="radio" value="long-jeans">Дълги дънки<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="short-jeans">Къси дънки<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="long-not-jeans">Дълги не-дънки<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="short-not-jeans">Къси не-дънки<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="formal">Официални<br>
-</div>
+        <div style="width: 100px;margin-left:740px;margin-top:-140px">
+          <label for="size-input-max">Размер:</label>
+          <br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="hidden"
+                 value="" checked>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="1">XS<br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="2">S<br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="3">M<br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="4">L<br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="5">XL<br>
+          <input id="size-input"
+                 class="form-control"
+                 name="size"
+                 type="radio"
+                 value="6">XXL<br>
+        </div>
+    <% end %>
 
-<div class="form-group" style="width: 100px;margin-left:740px;margin-top:-140px">
-  <label for="size-input">Размер:</label>
-    <input id="size-input-min" class="form-control" name="size" type="number" value="" step="1" >
-</div>
-<% end %>
+    <% if params[:type] == "" %>
+    <% margin = 154 %>
+    <% else %>
+    <% margin = 200 %>
+    <% end %>
 
-<% if params[:type] == "Top" %>
-
-<div class="form-group" style="margin-left:570px;margin-top:-120px" >
-    <label for="category-input">Категория</label>
-    <br>
-    <input id="category-input" class="form-control" name="category" type="hidden" value="" checked>
-    <input id="category-input" class="form-control" name="category" type="radio" value="vest">Потници<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="T-shirts">Тениски<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="long-sleeved">С дълъг ръкав<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="shirt">Ризи<br>
-    <input id="category-input" class="form-control" name="category" type="radio" value="sweater">Пуловери<br>
-</div>
-
-<div style="width: 100px;margin-left:740px;margin-top:-140px">
-  <label for="size-input-max">Размер:</label>
-  <br>
-  <input id="size-input" class  ="form-control" name="size" type="hidden" value="" checked>
-  <input id="size-input" class  ="form-control" name="size" type="radio" value="1">XS<br>
-  <input id="size-input" class="form-control" name="size" type="radio" value="2">S<br>
-  <input id="size-input" class="form-control" name="size" type="radio" value="3">M<br>
-  <input id="size-input" class="form-control" name="size" type="radio" value="4">L<br>
-  <input id="size-input" class="form-control" name="size" type="radio" value="5">XL<br>
-  <input id="size-input" class="form-control" name="size" type="radio" value="6">XXL<br>
-</div>
-<% end %>
-
-<% if params[:type] == "" %>
-<% margin = 154 %>
-<% else %>
-<% margin = 200 %>
-<% end %>
-
-<button style="width: 200px; margin-left:30%;margin-top:<%= margin %>px" type="submit" class="btn btn-default">Търси</button>
+    <button style="width: 200px; margin-left:30%;margin-top:<%= margin %>px"
+            type="submit"
+            class="btn btn-default">Търси</button>
 </form>
-
-
 
 <% products =  get_products({ product_name: params[:product_name],
                             type: params[:type],
@@ -143,33 +352,41 @@
 <% if products == [] %>
     Няма продукти с такива характеристики
 <% else %>
-<table class="products">
-  <tr class="products">
-    <th class="products">Модел</th>
-    <th class="products">Категория</th>
-    <th class="products">Пол</th>
-    <th class="products">Цвят</th>
-    <th class="products">Размери</th>
-    <th class="products">Цена</th>
-    <th class="products">Допълнителна информация</th>
-  </tr>
-  <% products.each do |product| %>
-    <tr class="products">
-        <td class="products"><strong><%= product.product_name %></strong></td>
-        <td class="products"><%= product.category %></td>
-        <td class="products"><%= product.gender %></td>
-        <td class="products"><%= product.color %></td>
-        <td class="products"><%= product.size_min %>-<%= product.size_max %></td>
-        <td class="products"><%= product.price %>лв</td>
-        <td class="products">
-          <form method="post" action="/open_shoes?product_id=<%=product.product_id%>">
-            <input type='hidden' value= "<%=product.product_id%>" name="product_id" >
-            <button type="submit" class="button_product">Виж повече</button>
-          </form>
-        </td>
-    </tr>
-  <% end %>
-</table>
+    <table class="products">
+        <tr class="products">
+            <th class="products">Модел</th>
+            <th class="products">Категория</th>
+            <th class="products">Пол</th>
+            <th class="products">Цвят</th>
+            <th class="products">Размери</th>
+            <th class="products">Цена</th>
+            <th class="products">Допълнителна информация</th>
+        </tr>
+        <% products.each do |product| %>
+            <tr class="products">
+                  <td class="products">
+                      <strong><%= product.product_name %></strong>
+                  </td>
+                  <td class="products"><%= categories(product.category)%></td>
+                  <td class="products"><%= genders(product.gender) %></td>
+                  <td class="products"><%= colors(product.color) %></td>
+                  <td class="products">
+                      <%= product.size_min %>-<%= product.size_max %>
+                  </td>
+                  <td class="products"><%= product.price %>лв</td>
+                  <td class="products">
+                      <form method="post"
+                            action="/open_product?product_id=<%=product.product_id%>">
+                          <input type='hidden'
+                                 value= "<%=product.product_id%>"
+                                 name="product_id">
+                          <button type="submit"
+                                  class="button_product">Виж повече</button>
+                      </form>
+                  </td>
+            </tr>
+        <% end %>
+    </table>
 <%end%>
 
 <br>

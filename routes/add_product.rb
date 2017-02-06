@@ -14,7 +14,7 @@ post '/add_product' do
     product_id = products.map { |x| x.product_id}.max + 1
   end
   if params[:size_min] > params[:size_max]
-    flash[:error] = "Грешка. Минималния размер е по-голям от максималния!"
+    flash[:error] = "Грешка. Минималният размер е по-голям от максималния!"
     redirect '/add_product'
   else
     size_min = params[:size_min].to_f
@@ -32,7 +32,7 @@ post '/add_product' do
                     category: params[:category],
                     type: params[:type]
                     )
-    flash[:success] = "Добавянето беше успешно."
+    flash[:success] = "Добавянето на продукта беше успешно."
     product.save
     redirect '/add_product'
   end

@@ -4,11 +4,13 @@ get '/create_user' do
 end
 
 post '/create_user' do
-  password_salt = BCrypt::Engine.generate_salt
-  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
   password = params[:password]
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+
   if password =~ /[^a-zA-Z0-9_]/
-    flash[:error] = "Грешка!Паролата може да съдържа само латински букви, цифри и _."
+    flash[:error] = "Грешка!Паролата може да съдържа'\
+                ' само латински букви, цифри и _."
     redirect '/create_user'
   end
   if password.length < 4
@@ -16,7 +18,12 @@ post '/create_user' do
     redirect '/create_user'
   end
 
-  user = User.new(user_name: params[:user_name], email: params[:email], salt: password_salt, password_hash: password_hash, admin: false, status: 'active')
+  user = User.new(user_name: params[:user_name],
+                  email: params[:email],
+                  salt: password_salt,
+                  password_hash: password_hash,
+                  admin: false, status: 'active')
+
   names = User.all.map{|user| user.user_name}
 
   if user.valid?

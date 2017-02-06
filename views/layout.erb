@@ -1,75 +1,77 @@
 
 <html>
-  <head>
-    <title>My Page</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="/styles/topNav.css">
-    <link rel="stylesheet" type="text/css" href="/styles/header.css">
-    <link rel="stylesheet" type="text/css" href="/styles/index.css">
-    <link rel="stylesheet" type="text/css" href="/styles/normal.css">
-    <link rel="stylesheet" type="text/css" href="/styles/product_table.css">
-    <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
-    <link rel="stylesheet" type="text/css" href="/styles/comments_table.css">
-  </head>
-  <body>
-    <header>
-      <ul class="header" id="header">
+    <head>
+        <title>My Page</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="/styles/topNav.css">
+        <link rel="stylesheet" type="text/css" href="/styles/header.css">
+        <link rel="stylesheet" type="text/css" href="/styles/index.css">
+        <link rel="stylesheet" type="text/css" href="/styles/normal.css">
+        <link rel="stylesheet" type="text/css" href="/styles/product_table.css">
+        <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
+        <link rel="stylesheet" type="text/css" href="/styles/comments_table.css">
+    </head>
+    <body>
+        <header>
+            <ul class="header" id="header">
+                <%if session[:user_name].nil? %>
+                    <li><a href="/create_user">Регистрация  </a></li>
+                    <li align="right"><a href="/login">Вход</a></li>
+                <% else %>
+                    <li><a href="/logout">Изход</a></li>
+                    <% if is_admin %>
+                        <li><a href="/all_orders">Поръчки</a></li>
+                        <li><a href="/all_users">Потребители</a></li>
+                    <% else %>
+                        <li><a href="/cart">Количка</a></li>
+                    <% end %>
+                    <br>
+                    <p style="color:white;">
+                    &nbsp;&nbsp;&nbsp;Влезли сте като: <%=session[:user_name]%>
+                    <% if is_admin %>
+                        (Администратор)
+                    <%end%></p>
+                <%end%>
+            </ul>
+        </header>
 
-        <%if session[:user_name].nil? %>
-          <li><a href="/create_user">Регистрация  </a></li>
-          <li align="right"><a href="/login">Вход</a></li>
-        <% else %>
-          <li><a href="/logout">Изход</a></li>
-          <% if is_admin %>
-          <li><a href="/all_orders">Поръчки</a></li>
-          <li><a href="/all_users">Потребители</a></li>
-          <% else %>
-          <li><a href="/cart">Количка</a></li>
-          <% end %>
-          <br>
-          <p style="color:white;">&nbsp;&nbsp;&nbsp;Влезли сте като: <%=session[:user_name]%>
-              <% if is_admin %>
-              (Администратор)
-            <%end%></p>
-        <%end%>
+      <ul class="topnav" id="Topnav">
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/shoes">Обувки</a></li>
+        <li><a href="/trousers">Панталони</a></li>
+        <li><a href="/tops">Блузи</a></li>
+        <li><a href="/search">Търси продукти</a></li>
+        <% if is_admin %>
+          <li><a href="/add_product">Добави продукти</a></li>
+        <%  end %>
+        <li class="icon">
+          <a href="javascript:void(0);"
+             style="font-size:15px;"
+             onclick="myFunction()">☰</a>
+        </li>
       </ul>
-    </header>
 
-    <ul class="topnav" id="Topnav">
-      <li><a class="active" href="/">Home</a></li>
-      <li><a href="/shoes">Обувки</a></li>
-      <li><a href="/trousers">Панталони</a></li>
-      <li><a href="/tops">Блузи</a></li>
-      <li><a href="/search">Търси продукти</a></li>
-      <% if is_admin %>
-        <li><a href="/add_product">Добави продукти</a></li>
-      <%  end %>
-      <li class="icon">
-        <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
-      </li>
-    </ul>
-
-    <script>
-      function myFunction()
-       {
-        var x = document.getElementById("Topnav");
-        if (x.className === "topnav")
-        {
-          x.className += " responsive";
-        } else
-        {
-        x.className = "topnav";
+      <script>
+        function myFunction()
+         {
+          var x = document.getElementById("Topnav");
+          if (x.className === "topnav")
+          {
+            x.className += " responsive";
+          } else
+          {
+          x.className = "topnav";
+          }
         }
-      }
-    </script>
+      </script>
 
-    <div id='main'>
-    <%  if !is_user_active && session[:user_name]%>
-    <h1 align="center" style="margin-top:5%">Вие сте баннати </h1>
-    <%  else %>
-        <%= yield %>
-      <% end %>
-    </div>
-  </body>
+      <div id='main'>
+      <%  if !is_user_active && session[:user_name]%>
+      <h1 align="center" style="margin-top:5%">Вие сте баннати </h1>
+      <%  else %>
+          <%= yield %>
+        <% end %>
+      </div>
+    </body>
 </html>

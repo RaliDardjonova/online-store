@@ -18,7 +18,7 @@ post '/update_product' do
 end
 
 post '/save_update_product' do
-  if is_amdin
+  if is_admin
     product = Product.find_by product_id: params[:product_id]
     size_min = params[:size_min].to_f
     size_max = params[:size_max].to_f
@@ -33,6 +33,7 @@ post '/save_update_product' do
       amount: params[:amount],
       category: params[:category]
     }
+    flash[:success] = "Продуктът беше променен успешно."
     product.update(changes)
     redirect "/open_product?product_id=#{params[:product_id]}"
   end

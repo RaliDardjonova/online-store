@@ -3,7 +3,10 @@
 <% user = User.find_by user_name: session[:user_name] %>
 <% order = Order.find(session[:order_id]) %>
 <br>
-<form method="post" action="/confirm_order" class="container" style="width: 40%">
+<form method="post"
+      action="/confirm_order"
+      class="container"
+      style="width: 40%">
     <div class="form-group">
         <label for="email-input">Имейл за кореспонденция</label>
         <input id="email-input"
@@ -13,7 +16,6 @@
                value="<%= user.email%>"
                readonly="readonly">
     </div>
-
     <div class="form-group">
         <label for="price-input">Обща цена на продуктите</label>
         <input id="price-input"
@@ -36,10 +38,15 @@
         <label for="adress-input">Адрес за доставка</label>
         <textarea id="adress-input"
                class="form-control"
-               name="adress"
+               name="address"
                type="text"
                rows="4"
                required></textarea>
     </div>
-    <button style="margin-left:11%;margin-top:30px;font-size:17px;padding: 14px 16px; background-color:green" type="submit" value="2" name="confirm_order" class="delete_button">Завършване на поръчката</button>
+    <% style = "margin-top:30px;font-size:17px;padding: 14px 16px;" %>
+    <button style="margin-left:11%;<%=style%> background-color:green"
+            type="submit"
+            value="2"
+            name="confirm_order"
+            class="delete_button">Завършване на поръчката</button>
 </form>

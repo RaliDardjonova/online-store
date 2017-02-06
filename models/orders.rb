@@ -1,5 +1,3 @@
-require_relative '../helpers/create_order'
-
 class Order < ActiveRecord::Base
 
   belongs_to :order_status

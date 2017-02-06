@@ -13,8 +13,9 @@ post '/delete_comment' do
     product_id = Comment.find(comment_id).product_id
 
     Comment.delete(comment_id)
+    flash[:success] = 'Коментарът беше изтрит успешно.'
 
-    redirect "/open_shoes?product_id=#{product_id}"
+    redirect "/open_product?product_id=#{product_id}"
   else
     redirect '/'
   end

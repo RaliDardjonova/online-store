@@ -1,4 +1,3 @@
-require_relative '../helpers/create_order.rb'
 
 get '/login' do
   erb :login
@@ -13,7 +12,8 @@ post '/login' do
       flash[:success] = "Поздравления! Успешно влизане."
       redirect '/'
     else
-      flash[:error] = "Вашите права са отнети. Не можете да влезнете в момента!"
+      flash[:error] = "Вашите права са отнети. ' \
+                  'Не можете да влезнете в момента!"
     end
   else
     flash[:error] = "Грешни име или парола."

@@ -5,31 +5,39 @@
 <% if Shoe.all == [] %>
     В момента няма налични обувки.
 <% else %>
-<table class="products">
-  <tr class="products">
-    <th class="products">Модел</th>
-    <th class="products">Категория</th>
-    <th class="products">Пол</th>
-    <th class="products">Цвят</th>
-    <th class="products">Размери</th>
-    <th class="products">Цена</th>
-    <th class="products">Допълнителна информация</th>
-  </tr>
-  <% Shoe.all.each do |shoes| %>
-    <tr class="products">
-        <td class="products"><strong><%= shoes.product_name %></strong></td>
-        <td class="products"><%= shoes.category %></td>
-        <td class="products"><%= shoes.gender %></td>
-        <td class="products"><%= shoes.color %></td>
-        <td class="products"><%= shoes.size_min %>-<%= shoes.size_max %></td>
-        <td class="products"><%= shoes.price %>лв</td>
-        <td class="products">
-          <form method="post" action="/open_product?product_id=<%=shoes.product_id%>">
-            <input type='hidden' value= "<%=shoes.product_id%>" name="product_id" >
-            <button type="submit" class="button_product">Виж повече</button>
-          </form>
-        </td>
-    </tr>
-  <% end %>
-</table>
+    <table class="products">
+        <tr class="products">
+            <th class="products">Модел</th>
+            <th class="products">Категория</th>
+            <th class="products">Пол</th>
+            <th class="products">Цвят</th>
+            <th class="products">Размери</th>
+            <th class="products">Цена</th>
+            <th class="products">Допълнителна информация</th>
+        </tr>
+        <% Shoe.all.each do |shoes| %>
+            <tr class="products">
+                <td class="products">
+                    <strong><%= shoes.product_name %></strong>
+                </td>
+                <td class="products"><%= categories(shoes.category)%></td>
+                <td class="products"><%= genders(shoes.gender) %></td>
+                <td class="products"><%= colors(shoes.color) %></td>
+                <td class="products">
+                    <%= shoes.size_min %>-<%= shoes.size_max %>
+                </td>
+                <td class="products"><%= shoes.price %>лв</td>
+                <td class="products">
+                    <form method="post"
+                          action="/open_product?product_id=<%=shoes.product_id%>">
+                        <input type='hidden'
+                               value= "<%=shoes.product_id%>"
+                               name="product_id">
+                        <button type="submit"
+                                class="button_product">Виж повече</button>
+                    </form>
+                </td>
+            </tr>
+        <% end %>
+    </table>
 <%end%>

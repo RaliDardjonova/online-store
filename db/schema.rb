@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204145337) do
+ActiveRecord::Schema.define(version: 20170205165031) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "user_name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170204145337) do
     t.string   "user_name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "address"
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
@@ -56,7 +57,6 @@ ActiveRecord::Schema.define(version: 20170204145337) do
     t.integer "product_id"
     t.float   "size_min"
     t.float   "size_max"
-    t.string  "size"
     t.string  "color"
     t.string  "gender"
     t.integer "amount"

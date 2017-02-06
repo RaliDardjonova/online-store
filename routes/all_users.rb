@@ -9,7 +9,3 @@ get '/all_users' do
     erb :no_permission
   end
 end
-
-post '/all_users' do
-
-end

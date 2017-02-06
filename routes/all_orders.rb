@@ -8,7 +8,3 @@ get '/all_orders' do
     erb :no_permission
   end
 end
-
-post '/all_orders' do
-
-end

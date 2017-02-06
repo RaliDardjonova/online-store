@@ -3,23 +3,30 @@
 <% end %>
 
 <h3 align='center'>Добавяне на панталони</h3>
-<form method="get" action="/add_chosen_product" class="container" style="width: 1100px;margin-left:0px;margin-bottom:0px">
-  <div class="form-group" style="width: 200px; margin-left:53%; margin-top:0px">
-    <label for="type-input">Изберете тип на продукта</label>
-    <select name="type" onchange="this.form.submit()">
-      <option value="Shoe">Обувки</option>
-      <option value="Trouser" selected>Панталони</option>
-      <option value="Top">Блузи</option>
-    </select>
-  </div>
+<form method="get"
+      action="/add_chosen_product"
+      class="container"
+      style="width: 1100px;margin-left:0px;margin-bottom:0px">
+
+    <div class="form-group"
+       style="width: 200px; margin-left:53%; margin-top:0px">
+       <label for="type-input">Изберете тип на продукта</label>
+       <select name="type" onchange="this.form.submit()">
+            <option value="Shoe">Обувки</option>
+            <option value="Trouser" selected>Панталони</option>
+            <option value="Top">Блузи</option>
+        </select>
+    </div>
 </form>
 
+<form method="post"
+      action="/add_product"
+      class="container"
+      style="width: 700px">
 
-<form method="post" action="/add_product" class="container" style="width: 700px">
-  <div class="form-group">
-      <input value="Trouser" name="type" type="hidden">
-  </div>
-
+    <div class="form-group">
+        <input value="Trouser" name="type" type="hidden">
+    </div>
     <div class="form-group">
         <label for="shoes-name-input">Наименование</label>
         <input id="shoes-name-input"
@@ -39,54 +46,148 @@
     </div>
     <div class="form-group" style="width: 200px">
         <label for="price-input">Цена</label>
-        <input id="price-input" class="form-control" name="price" type="number" step="0.01" required>
+        <input id="price-input"
+               class="form-control"
+               name="price"
+               type="number"
+               step="0.01"
+               required>
     </div>
     <label for="size-input">Размер:</label>
     <div class="form-group" style="width: 100px;margin-left: 25px">
         <label for="size-input-min">От</label>
-        <input id="size-input-min" class="form-control" name="size_min" type="number" step="1" required>
+        <input id="size-input-min"
+               class="form-control"
+               name="size_min"
+               type="number"
+               step="1"
+               required>
         <label for="size-input-max">До</label>
-        <input id="size-input-max" class="form-control" name="size_max" type="number" step="1" required>
+        <input id="size-input-max"
+               class="form-control"
+               name="size_max"
+               type="number"
+               step="1"
+               required>
     </div>
     <div class="form-group">
         <label for="color-input">Цвят</label>
         <br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="white" checked>Бели<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="yellow">Жълти<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="orange">Оранжеви<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="red">Червени<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="pink">Розови<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="purble">Лилави<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="blue">Сини<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="green">Зелени<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="black">Черни<br>
-        <input id="color-input" class="form-control" name="color" type="radio" value="grey">Сиви
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="white"
+               checked>Бели<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="yellow">Жълти<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="orange">Оранжеви<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="red">Червени<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="pink">Розови<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="purple">Лилави<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="blue">Сини<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="green">Зелени<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="black">Черни<br>
+        <input id="color-input"
+               class="form-control"
+               name="color"
+               type="radio"
+               value="grey">Сиви
     </div>
     <div class="form-group">
         <label for="gender-input">Пол</label>
         <br>
-        <input id="gender-input" class="form-control" name="gender" type="radio" value="women" checked>Дамски<br>
-        <input id="gender-input" class="form-control" name="gender" type="radio" value="men">Мъжки<br>
-        <input id="gender-input" class="form-control" name="gender" type="radio" value="children">Детски<br>
-        <input id="gender-input" class="form-control" name="gender" type="radio" value="unisex">Унисекс<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="women"
+               checked>Дамски<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="men">Мъжки<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="children">Детски<br>
+        <input id="gender-input"
+               class="form-control"
+               name="gender"
+               type="radio"
+               value="unisex">Унисекс<br>
     </div>
-
     <div class="form-group">
         <label for="category-input">Категория</label>
         <br>
-        <input id="category-input" class="form-control" name="category" type="radio" value="long-jeans" checked>Дълги дънки<br>
-        <input id="category-input" class="form-control" name="category" type="radio" value="short-jeans">Къси дънки<br>
-        <input id="category-input" class="form-control" name="category" type="radio" value="long-not-jeans">Дълги не-дънки<br>
-        <input id="category-input" class="form-control" name="category" type="radio" value="short-not-jeans">Къси не-дънки<br>
-        <input id="category-input" class="form-control" name="category" type="radio" value="formal">Официални<br>
-
+        <input id="category-input"
+               class="form-control"
+               name="category"
+               type="radio"
+               value="long-jeans"
+               checked>Дълги дънки<br>
+        <input id="category-input"
+               class="form-control"
+               name="category"
+               type="radio"
+               value="short-jeans">Къси дънки<br>
+        <input id="category-input"
+               class="form-control"
+               name="category"
+               type="radio"
+               value="long-not-jeans">Дълги не-дънки<br>
+        <input id="category-input"
+               class="form-control"
+               name="category"
+               type="radio"
+               value="short-not-jeans">Къси не-дънки<br>
+        <input id="category-input"
+               class="form-control"
+               name="category"
+               type="radio"
+               value="formal">Официални<br>
     </div>
 
     <div class="form-group" style="width: 200px">
         <label for="amount-input">Налично количество</label>
-        <input id="amount-input" class="form-control" name="amount" type="number" required>
+        <input id="amount-input"
+               class="form-control"
+               name="amount"
+               type="number" required>
     </div>
-
 
     <button type="submit" class="btn btn-default">Запиши</button>
 </form>

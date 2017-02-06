@@ -1,13 +1,27 @@
+<% if flash[:success] %>
+    <p align="center" class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:error] %>
+    <p align="center" class="bg-danger"><%= flash[:error] %></p>
+<% end %>
+
 <h3 align='center'>Добавяне на продукти</h3>
 
-<form method="get" action="/add_chosen_product" class="container" style="width: 1100px;margin-left:0%;margin-bottom:0px">
-<div class="form-group" style="width: 200px; margin-left:53%; margin-top:0px">
-<label for="type-input">Изберете тип на продукта</label>
-<select name="type" onchange="this.form.submit()">
-  <option value="" selected></option>
-  <option value="Shoe">Обувки</option>
-  <option value="Trouser">Панталони</option>
-  <option value="Top">Блузи</option>
-</select>
-</div>
+<form method="get"
+      action="/add_chosen_product"
+      class="container"
+      style="width: 1100px;margin-left:0%;margin-bottom:0px">
+
+    <div class="form-group"
+         style="width: 200px; margin-left:53%; margin-top:0px">
+         
+        <label for="type-input">Изберете тип на продукта</label>
+        <select name="type" onchange="this.form.submit()">
+            <option value="" selected></option>
+            <option value="Shoe">Обувки</option>
+            <option value="Trouser">Панталони</option>
+            <option value="Top">Блузи</option>
+        </select>
+    </div>
 </form>
