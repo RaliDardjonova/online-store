@@ -17,6 +17,7 @@ GEM
     arel (7.1.4)
     backports (3.6.8)
     bcrypt (3.1.11-x86-mingw32)
+    builder (3.2.2)
     capybara (2.12.0)
       addressable
       mime-types (>= 1.16)
@@ -44,6 +45,9 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rake (12.0.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -90,6 +94,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   factory_girl
+  rack_session_access
   rake
   rspec
   sinatra

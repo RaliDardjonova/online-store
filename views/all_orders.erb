@@ -22,7 +22,7 @@
 
     <div class="form-group"
          style="width: 200px; margin-left:40%; margin-top:-70px">
-        <label for="price-input">Изберете статус</label>
+        <label for="order_status">Изберете статус</label>
         <select name="order_status" >
             <option value="0">Всички</option>
             <option value="2">Чакащи потвърждение</option>
@@ -37,7 +37,7 @@
 
 <% all_orders =  get_orders params[:order_status], params[:user_name] %>
 <% if all_orders == [] %>
-    Все още няма поръчки.
+    <h4 style="margin-left:50px">Все още няма поръчки.</h4>
 <% else %>
     <h3 align="left" style="margin-left:5%">Поръчки</h3>
     <br>

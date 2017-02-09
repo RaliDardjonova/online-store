@@ -16,7 +16,7 @@
     <div class="form-group"
          style="width: 200px; margin-left:270px; margin-top:-74px">
         <label for="type-input">Изберете тип на продукта</label>
-        <select name="type" onchange="this.form.submit()">
+        <select id="type" name="type" onchange="this.form.submit()">
             <option value= ""
                     <% if params[:type] == ""%> selected <% end %>>
                 Всички</option>
@@ -238,7 +238,7 @@
         <div class="form-group"
             style="width: 100px;margin-left:740px;margin-top:-140px">
             <label for="size-input">Размер:</label>
-            <input id="size-input-min"
+            <input id="size-input"
                   class="form-control"
                   name="size"
                   type="number"
@@ -350,7 +350,7 @@
 <br>
 
 <% if products == [] %>
-    Няма продукти с такива характеристики
+    <h4 style="margin-left:50px">Няма продукти с такива характеристики</h4>
 <% else %>
     <table class="products">
         <tr class="products">
@@ -371,7 +371,11 @@
                   <td class="products"><%= genders(product.gender) %></td>
                   <td class="products"><%= colors(product.color) %></td>
                   <td class="products">
-                      <%= product.size_min %>-<%= product.size_max %>
+                      <% if product.type == "Top" %>
+                        <%= tops_sizes(product.size_min) %>-<%= tops_sizes product.size_max %>
+                      <%else %>
+                        <%= product.size_min %>-<%= product.size_max %>
+                      <% end%>
                   </td>
                   <td class="products"><%= product.price %>лв</td>
                   <td class="products">

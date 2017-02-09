@@ -10,6 +10,11 @@ post '/update_order' do
       erb :confirm_order
     else
       order.update(order_status_id: 4)
+      order.order_items.each do |item|
+        product = item.product
+        amount = product.amount + item.amount
+        product.update(amount: amount)
+      end
       session[:order_id] = nil
       flash[:success] = "Количката ви беше изпразнена."
       redirect '/cart'

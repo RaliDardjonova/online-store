@@ -16,10 +16,12 @@
             <option value="Trouser" selected>Панталони</option>
             <option value="Top">Блузи</option>
         </select>
+        <input id="type-submit" type="submit" style="visibility: hidden;" >
     </div>
 </form>
 
-<form method="post"
+<form id='add-product'
+      method="post"
       action="/add_product"
       class="container"
       style="width: 700px">
@@ -28,10 +30,10 @@
         <input value="Trouser" name="type" type="hidden">
     </div>
     <div class="form-group">
-        <label for="shoes-name-input">Наименование</label>
-        <input id="shoes-name-input"
+        <label for="product-name-input">Наименование</label>
+        <input id="product-name-input"
                class="form-control"
-               name="shoes_name"
+               name="product_name"
                type="string"
                maxlength="50"
                required>
@@ -51,6 +53,7 @@
                name="price"
                type="number"
                step="0.01"
+               min="0"
                required>
     </div>
     <label for="size-input">Размер:</label>
@@ -61,6 +64,7 @@
                name="size_min"
                type="number"
                step="1"
+               min="0"
                required>
         <label for="size-input-max">До</label>
         <input id="size-input-max"
@@ -68,6 +72,7 @@
                name="size_max"
                type="number"
                step="1"
+               min="0"
                required>
     </div>
     <div class="form-group">
@@ -186,7 +191,10 @@
         <input id="amount-input"
                class="form-control"
                name="amount"
-               type="number" required>
+               type="number"
+               step="1"
+               min="0"
+               required>
     </div>
 
     <button type="submit" class="btn btn-default">Запиши</button>

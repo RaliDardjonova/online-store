@@ -20,7 +20,7 @@ post '/add_product' do
     size_min = params[:size_min].to_f
     size_max = params[:size_max].to_f
     product = Product.new(
-                    product_name: params[:shoes_name],
+                    product_name: params[:product_name],
                     description: params[:description],
                     price: params[:price],
                     product_id: product_id,

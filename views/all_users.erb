@@ -22,7 +22,7 @@
 
     <div class="form-group"
         style="width: 200px; margin-left:45%; margin-top:-70px">
-        <label for="price-input">Права за достъп</label>
+        <label for="user-status-input">Права за достъп</label>
         <select name="user_status" >
             <option value="all">Всички</option>
             <option value="active">Активни</option>
@@ -31,11 +31,11 @@
     </div>
     <div class="form-group"
          style="width: 200px; margin-left:70%; margin-top:-60px">
-        <label for="price-input">Ниво на достъп</label>
+        <label for="user-rights-input">Ниво на достъп</label>
         <select name="is_admin">
             <option value="all">Всички</option>
             <option value="true">Администратор</option>
-            <option value="false">Потрребител</option>
+            <option value="false">Потребител</option>
         </select>
     </div>
     <button style="width: 100px; margin-left:95%;margin-top:-45px"
@@ -49,7 +49,7 @@
 
 
 <% if users == [] %>
-    Няма потребители с указаните данни.
+    <h4 style="margin-left:50px">Няма потребители с указаните данни.</h4>
 <% else %>
     <h3 align="left" style="margin-left:5%">Акаунти</h3>
     <br>
@@ -80,7 +80,7 @@
                               value= "<%=user.user_name%>"
                               name="user_name" >
                         <button type="submit"
-                                class="button_product">Напарви администратор
+                                class="button_product">Направи администратор
                         </button>
                     </form>
                 <% end %>

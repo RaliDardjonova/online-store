@@ -14,8 +14,4 @@ class User < ActiveRecord::Base
       nil
     end
   end
-
-  def find_products
-    orders.unpurchased.map { |order| order.product  }
-  end
 end

@@ -13,7 +13,8 @@ gem 'sqlite3'
 
 group :test do
   gem "rspec"
-  #gem "rack-test"
+  gem 'rack_session_access'
+  #gem "selenium-webdriver"
   gem "capybara"
   gem 'database_cleaner'
   gem 'factory_girl'

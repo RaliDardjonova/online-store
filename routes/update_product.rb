@@ -45,7 +45,7 @@ post '/delete_product' do
     product_id = params[:product_id]
     product = Product.find_by product_id: product_id
     product.delete
-    Comment.delete_all(product_id: product_id)
+    Comment.where(product_id: product_id).delete_all
     erb :product_is_deleted
   else
     erb :no_permission

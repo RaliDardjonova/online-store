@@ -84,7 +84,8 @@ helpers do
     if user_name == ""
       get_users_by_status_isadmin(User.all, status, is_admin)
     elsif user
-      user.admin == str_true?(is_admin) && user.status == status ? [user] : []
+      (user.admin == str_true?(is_admin)  || is_admin == 'all') &&
+      (user.status == status || status == 'all') ? [user] : []
     else
       []
     end
@@ -193,7 +194,7 @@ helpers do
     hash_types = {
       'Shoe' => 'Обувки',
       'Trouser' => 'Панталони',
-      'Top' => 'Блузи'      
+      'Top' => 'Блузи'
     }
     hash_types[type]
   end

@@ -17,6 +17,8 @@ post '/add_to_cart' do
       order = current_order
       order_item = order.order_items.new(order_item_params)
       order.save
+      left_amount = product.amount - params[:amount].to_i
+      product.update(amount: left_amount)
       flash[:success] = "Продуктът беше добавен успешно към количката ви."
       session[:order_id] = order.id
     end

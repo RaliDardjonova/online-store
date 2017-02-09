@@ -4,8 +4,6 @@ require 'sinatra/flash'
 require 'bcrypt'
 require 'date'
 
-set :database, "sqlite3:db_store.sqlite3"
-
 require_relative 'models/user'
 require_relative 'models/products'
 require_relative 'models/tops'

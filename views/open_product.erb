@@ -9,13 +9,14 @@
 <br>
 <h1 align="left" style="margin-left:50px"><%= @product.product_name %>
 </h1>
+<br>
 <% if @product.amount > 0 %>
     <ul style="background-color: green;" class="normal">
         <li> В наличност </li>
     </ul>
     <% if session[:user_name] && !is_admin %>
         <form style="margin-left:200px" method="post" action="/add_to_cart">
-            <label for="price-input">Изберете размер</label>
+            <label for="size-input">Изберете размер</label>
             <select name="size" >
                 <% range = get_product_sizes @product%>
                 <% range.each do |size| %>
@@ -33,8 +34,8 @@
                    min="1"
                    value="1"
                    required>
-            <%style = "margin-top:-35px;font-size:17px;padding: 14px 16px;" %>
-            <button style="margin-left:525px; background-color:grey"
+            <%style = "margin-top:-45px;font-size:17px;padding: 14px 16px;" %>
+            <button style="<%= style %>margin-left:525px; background-color:grey"
                     type="submit"
                     value="<%=@product.product_id%>"
                     name="product_id"
@@ -45,7 +46,7 @@
               method="post"
               action="/update_product">
             <% style = "margin-top:0px;font-size:17px;padding: 14px 16px;" %>
-            <button style=" background-color:#e6ac00;"
+            <button style="<%= style %> background-color:#e6ac00;"
                     type="submit"
                     value="<%=@product.product_id%>"
                     name="product_id"
@@ -56,7 +57,7 @@
  че искате да изтриете продукта?');"
               method="post"
               action="/delete_product">
-            <button style="margin-top:-4px;font-size:17px;padding: 14px 16px;"
+            <button style="margin-top:-14px;font-size:17px;padding: 14px 16px;"
                     type="submit"
                     value="<%=@product.product_id%>"
                     name="product_id"
@@ -76,6 +77,16 @@
 <div style="margin-left:70px;font-size:17px;">
     <%=@product.description%>
 </div>
+
+<h3 align="left" style="margin-left:50px">Характеристики</h3>
+<div style="margin-left:70px;font-size:17px;">
+    Категория: <%= categories(@product.category) %> <br>
+    Цвят: <%= colors(@product.color) %> <br>
+    Пол: <%= genders(@product.gender) %> <br>
+    Единична цена: <%= @product.price %>лв
+</div>
+
+
 <h3 align="left" style="margin-left:50px">Коментари</h3>
 <%comments = Comment.where product_id: @product.product_id %>
 <table id="comments" class="comment">

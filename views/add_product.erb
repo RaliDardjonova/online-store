@@ -15,13 +15,14 @@
 
     <div class="form-group"
          style="width: 200px; margin-left:53%; margin-top:0px">
-         
+
         <label for="type-input">Изберете тип на продукта</label>
-        <select name="type" onchange="this.form.submit()">
+        <select id='type' name="type" onchange="this.form.submit()">
             <option value="" selected></option>
             <option value="Shoe">Обувки</option>
             <option value="Trouser">Панталони</option>
             <option value="Top">Блузи</option>
         </select>
+        <input id="type-submit" type="submit" style="visibility: hidden;" >
     </div>
 </form>
